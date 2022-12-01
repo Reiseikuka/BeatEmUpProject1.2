@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //Github test
-    
     //Components
 
+    //Player Movement
     Rigidbody2D rb;
-    //Player
     private float speed = 3f;
     //Walk Speed of the character
     private float speedLimiter = 0.7f;
@@ -18,6 +16,8 @@ public class PlayerController : MonoBehaviour
     //So we can set the movement from right to left
     private float inputVertical;
     //So we can set the movement from up to down
+    bool isMoving = false;
+    bool canMove = true;
 
     //Animations
     public Animator anim;
@@ -30,10 +30,8 @@ public class PlayerController : MonoBehaviour
     public bool hattacking;
     //For Heavy attacks.
 
-    //Movement
-    bool isMoving = false;
-    bool canMove = true;
-//sasa
+
+    //Functions
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -43,7 +41,6 @@ public class PlayerController : MonoBehaviour
         //Get the Animator
     }
 
-    // Update is called once per frame
     void Update()
     {
         inputHorizontal = Input.GetAxisRaw("Horizontal");
@@ -140,7 +137,6 @@ public class PlayerController : MonoBehaviour
                         hattacking = false;
                 }
         } 
-            //If we are jumping, kick in the air
     }
     //For heavy attack
 
@@ -181,4 +177,5 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(-15.34f, transform.position.y, 0);
         }
     }
+
 }
