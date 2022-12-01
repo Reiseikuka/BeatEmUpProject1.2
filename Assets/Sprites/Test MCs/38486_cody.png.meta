@@ -1,0 +1,1320 @@
+fileFormatVersion: 2
+guid: 2a4be05064fd070438019f361c357a77
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5199488297101882893
+    second: 38486_cody_0
+  - first:
+      213: 9143282308036114982
+    second: 38486_cody_1
+  - first:
+      213: -4601704431553488293
+    second: 38486_cody_2
+  - first:
+      213: -4860475981181536666
+    second: 38486_cody_3
+  - first:
+      213: -3953955885712454383
+    second: 38486_cody_4
+  - first:
+      213: 2201752643279021585
+    second: 38486_cody_5
+  - first:
+      213: 7454075713054769880
+    second: 38486_cody_6
+  - first:
+      213: -6156819888359821531
+    second: 38486_cody_7
+  - first:
+      213: -804534560764116336
+    second: 38486_cody_8
+  - first:
+      213: -3729769677256446576
+    second: 38486_cody_9
+  - first:
+      213: -792893168414658514
+    second: 38486_cody_10
+  - first:
+      213: -1186468566529834691
+    second: 38486_cody_11
+  - first:
+      213: -1405885575730361619
+    second: 38486_cody_12
+  - first:
+      213: 4061960297184040714
+    second: 38486_cody_13
+  - first:
+      213: -4654562093302914334
+    second: 38486_cody_14
+  - first:
+      213: -6420039175762949402
+    second: 38486_cody_15
+  - first:
+      213: -1833253985507063466
+    second: 38486_cody_16
+  - first:
+      213: -6787078853741793251
+    second: 38486_cody_17
+  - first:
+      213: -6242517695788260930
+    second: 38486_cody_18
+  - first:
+      213: 1036437435099572371
+    second: 38486_cody_19
+  - first:
+      213: -4960835856971283572
+    second: 38486_cody_20
+  - first:
+      213: 6571625775153731774
+    second: 38486_cody_21
+  - first:
+      213: 7551541312601283304
+    second: 38486_cody_22
+  - first:
+      213: 1068427498247401219
+    second: 38486_cody_23
+  - first:
+      213: 5741221431492169378
+    second: 38486_cody_24
+  - first:
+      213: 4245486939804136076
+    second: 38486_cody_25
+  - first:
+      213: 7065434169038034024
+    second: 38486_cody_26
+  - first:
+      213: -8574018531084576277
+    second: 38486_cody_27
+  - first:
+      213: 2425751242848671290
+    second: 38486_cody_28
+  - first:
+      213: -5771780902029202777
+    second: 38486_cody_29
+  - first:
+      213: 1391366591391228346
+    second: 38486_cody_30
+  - first:
+      213: 8707752533092078558
+    second: 38486_cody_31
+  - first:
+      213: 5847145174468993561
+    second: 38486_cody_32
+  - first:
+      213: 8768602260286891558
+    second: 38486_cody_33
+  - first:
+      213: -7093399718650416712
+    second: 38486_cody_34
+  - first:
+      213: -319175402512696676
+    second: 38486_cody_35
+  - first:
+      213: -3011342632856826746
+    second: 38486_cody_36
+  - first:
+      213: 2316700700531000770
+    second: 38486_cody_37
+  - first:
+      213: -717685580131484107
+    second: 38486_cody_38
+  - first:
+      213: -283557741475700927
+    second: 38486_cody_39
+  - first:
+      213: -984816728730436387
+    second: 38486_cody_40
+  - first:
+      213: 3023205172551523680
+    second: 38486_cody_41
+  - first:
+      213: -524522000026110816
+    second: 38486_cody_42
+  - first:
+      213: -3259078905120374484
+    second: 38486_cody_43
+  - first:
+      213: 19194959377118238
+    second: 38486_cody_44
+  - first:
+      213: 5916560229466426099
+    second: 38486_cody_45
+  - first:
+      213: 1698882009571671327
+    second: 38486_cody_46
+  - first:
+      213: -8956292600013686993
+    second: 38486_cody_47
+  - first:
+      213: -6078929522955036852
+    second: 38486_cody_48
+  - first:
+      213: 2107725261341592787
+    second: 38486_cody_56
+  - first:
+      213: 3547425244599778453
+    second: 38486_cody_57
+  - first:
+      213: -5585785076075040911
+    second: 38486_cody_58
+  - first:
+      213: 8709212003785839082
+    second: 38486_cody_59
+  - first:
+      213: 2617136662081661451
+    second: 38486_cody_60
+  - first:
+      213: 3415321492048497950
+    second: 38486_cody_61
+  - first:
+      213: -6776793702605105995
+    second: 38486_cody_62
+  - first:
+      213: -6521183631989559596
+    second: 38486_cody_63
+  - first:
+      213: -7106304667884255751
+    second: 38486_cody_64
+  - first:
+      213: -1972003220952224632
+    second: 38486_cody_65
+  - first:
+      213: 3475443479618196222
+    second: 38486_cody_66
+  - first:
+      213: 8148499412375578091
+    second: 38486_cody_68
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 38486_cody_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 349
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d06fe82ee0b482840800000000000000
+      internalID: 5199488297101882893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 349
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a3b93e0d673ee70800000000000000
+      internalID: 9143282308036114982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_2
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 349
+        width: 21
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5ad9eb43367320c0800000000000000
+      internalID: -4601704431553488293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_3
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 349
+        width: 21
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6663b56d8de1c8cb0800000000000000
+      internalID: -4860475981181536666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_4
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 349
+        width: 21
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d4b86221ab029c0800000000000000
+      internalID: -3953955885712454383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_5
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 349
+        width: 21
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1166ce91d523e8e10800000000000000
+      internalID: 2201752643279021585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_7
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 339
+        width: 49
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52fa0488ee49e8aa0800000000000000
+      internalID: -6156819888359821531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 307
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09241206418b5d4f0800000000000000
+      internalID: -804534560764116336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 307
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09d2b1d5d323d3cc0800000000000000
+      internalID: -3729769677256446576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_10
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 307
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e207fcf3dd31ff4f0800000000000000
+      internalID: -792893168414658514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_11
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 307
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3182daff11d88fe0800000000000000
+      internalID: -1186468566529834691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_12
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 307
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea0fbf748a4d7ce0800000000000000
+      internalID: -1405885575730361619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 270
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d10b724fdb37fc1a0800000000000000
+      internalID: -6787078853741793251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_18
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 270
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb1637eda3f1e59a0800000000000000
+      internalID: -6242517695788260930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_19
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 270
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398e60f1b5a226e00800000000000000
+      internalID: 1036437435099572371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_21
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 270
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8d6d413da133b50800000000000000
+      internalID: 6571625775153731774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_22
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 270
+        width: 29
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea594460d67cc860800000000000000
+      internalID: 7551541312601283304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 223
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8645b6541f67d0260800000000000000
+      internalID: 7065434169038034024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_27
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 223
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be95615b297f20980800000000000000
+      internalID: -8574018531084576277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_28
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 223
+        width: 30
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36157737eff9a120800000000000000
+      internalID: 2425751242848671290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_29
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 223
+        width: 30
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa6a2d89d386efa0800000000000000
+      internalID: -5771780902029202777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_31
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 223
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed316fe0bc628d870800000000000000
+      internalID: 8707752533092078558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_32
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 223
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9122d528e8b352150800000000000000
+      internalID: 5847145174468993561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_33
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 223
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62666153c4550b970800000000000000
+      internalID: 8768602260286891558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_34
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 223
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b17cffc98e2f8d90800000000000000
+      internalID: -7093399718650416712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_35
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 181
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a303899af029bf0800000000000000
+      internalID: -319175402512696676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_36
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 181
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68c449784df8536d0800000000000000
+      internalID: -3011342632856826746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_37
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 181
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c58c024303962020800000000000000
+      internalID: 2316700700531000770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_38
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 181
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53eb7df64c44a06f0800000000000000
+      internalID: -717685580131484107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_40
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 181
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddcf82b276a3552f0800000000000000
+      internalID: -984816728730436387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_41
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 181
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d9e09361594f920800000000000000
+      internalID: 3023205172551523680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_42
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 140
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a4f09f150688b8f0800000000000000
+      internalID: -524522000026110816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_43
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 139
+        width: 33
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21c45dc00d65c2d0800000000000000
+      internalID: -3259078905120374484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_44
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 139
+        width: 33
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14b62fb6b1344000800000000000000
+      internalID: 19194959377118238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_46
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 139
+        width: 33
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1d32d7cf24a39710800000000000000
+      internalID: 1698882009571671327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_47
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 147
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2779bf255bd4b380800000000000000
+      internalID: -8956292600013686993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_48
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 55
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4751a17ecd43aba0800000000000000
+      internalID: -6078929522955036852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 55
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc026e35f4204d10800000000000000
+      internalID: 2107725261341592787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_57
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 55
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c7f93077cfa3130800000000000000
+      internalID: 3547425244599778453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_58
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 55
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17f6edc611e4b72b0800000000000000
+      internalID: -5585785076075040911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_59
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 55
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1193f8c265dd870800000000000000
+      internalID: 8709212003785839082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_60
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 55
+        width: 33
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0a67009defe15420800000000000000
+      internalID: 2617136662081661451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_61
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 55
+        width: 33
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1dce474dc8a56f20800000000000000
+      internalID: 3415321492048497950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_62
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 64
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b45e10580ef3f1a0800000000000000
+      internalID: -6776793702605105995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10
+        width: 32
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4deab24990a1085a0800000000000000
+      internalID: -6521183631989559596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_64
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 10
+        width: 32
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f50f0d2e85516d90800000000000000
+      internalID: -7106304667884255751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_65
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 10
+        width: 32
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88c6737c48902a4e0800000000000000
+      internalID: -1972003220952224632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_66
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 4
+        width: 42
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef217975e614b3030800000000000000
+      internalID: 3475443479618196222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 38486_cody_68
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 13
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be5202ffa09451170800000000000000
+      internalID: 8148499412375578091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
