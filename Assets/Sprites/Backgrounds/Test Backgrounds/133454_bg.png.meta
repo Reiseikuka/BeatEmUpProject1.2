@@ -7090,7 +7090,7 @@ TextureImporter:
         x: 0
         y: 455
         width: 1016
-        height: 46
+        height: 151
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -7105,55 +7105,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 133454_bg_1
+      name: 133454_bg_3
       rect:
         serializedVersion: 2
         x: 0
         y: 283
         width: 1016
-        height: 61
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e6f105be93488960800000000000000
-      internalID: 7604402319735781096
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Background_LV1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 501
-        width: 1016
-        height: 105
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27ff8d2747272cca0800000000000000
-      internalID: -5998105909235482766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 133454_bg_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 344
-        width: 1016
-        height: 93
+        height: 153
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -7172,9 +7130,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 115
+        y: 69
         width: 504
-        height: 106
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -7184,27 +7142,6 @@ TextureImporter:
       bones: []
       spriteID: f948718525f959bb0800000000000000
       internalID: -4929859041073068897
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 133454_bg_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 70
-        width: 504
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25244fe8d33447630800000000000000
-      internalID: 3923835107016983122
       vertices: []
       indices: 
       edges: []
