@@ -14,15 +14,11 @@ namespace SA
         private void OnTriggerEnter(Collider other)
         {
             UnitController u = other.GetComponentInParent<UnitController>();
-
             if (u != null)
             {
-                if (u!= owner)
+                if (u != owner)
                 {
-                    if (!u.isInteracting)
-                    {
-                        u.PlayAnimation("hurt 1");
-                    }
+                        u.OnHit(owner.getLastAction, owner.transform.position);
                 }
 
             }

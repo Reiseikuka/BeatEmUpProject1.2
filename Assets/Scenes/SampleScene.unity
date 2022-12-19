@@ -184,7 +184,7 @@ Animator:
   m_GameObject: {fileID: 88173721}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0dff4a9bc8b2e07499d4ac5ea8a7bf7b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5e4812668ca80e243847e13e16d3c5fa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -337,8 +337,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ad9a4750f89f642a710edc485d4527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   agent: {fileID: 430255761}
   holder: {fileID: 912910893}
+  horizontalSpeed: 0.8
+  verticalSpeed: 0.65
+  isAI: 1
+  actions:
+  - actionAnim: attack 1
+    damageType: 0
 --- !u!114 &430255763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitController: {fileID: 430255762}
   target: {fileID: 1590689342}
+  attackRate: 1.5
   attackDistance: 0.5
 --- !u!4 &430255764
 Transform:
@@ -439,7 +447,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 5199488297101882893, guid: 2a4be05064fd070438019f361c357a77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -457,7 +465,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20428
+  m_Name: pb_Mesh20436
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1135,7 +1143,7 @@ Animator:
   m_GameObject: {fileID: 1115698054}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a491af4018d3f3545bf8f1b02def7c23, type: 2}
+  m_Controller: {fileID: 9100000, guid: e5ff814a70583854185eea496daa2143, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1185,7 +1193,7 @@ Transform:
   m_GameObject: {fileID: 1389346907}
   m_LocalRotation: {x: -0.9995434, y: -0, z: -0, w: 0.030215777}
   m_LocalPosition: {x: 0.14, y: 0.21, z: 0.44}
-  m_LocalScale: {x: 0.6017147, y: 0.6251581, z: 0.16586974}
+  m_LocalScale: {x: 0.7784984, y: 0.6251581, z: 0.16586974}
   m_Children: []
   m_Father: {fileID: 1115698055}
   m_RootOrder: 1
@@ -1198,7 +1206,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389346907}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1322,8 +1330,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ad9a4750f89f642a710edc485d4527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   agent: {fileID: 1590689339}
   holder: {fileID: 392582262}
+  horizontalSpeed: 0.8
+  verticalSpeed: 0.65
+  isAI: 0
+  actions:
+  - actionAnim: attack 1
+    damageType: 0
 --- !u!114 &1590689341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1393,7 +1408,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609551831}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1517,7 +1532,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8604692916125571210, guid: 6a08113937e86374fbff0eda3193a2ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1669,7 +1684,7 @@ Transform:
   m_GameObject: {fileID: 2128224463}
   m_LocalRotation: {x: -0.9995434, y: -0, z: -0, w: 0.030215777}
   m_LocalPosition: {x: 0.24000001, y: 0.21, z: 0.44}
-  m_LocalScale: {x: 0.60171473, y: 0.6251581, z: 0.1658697}
+  m_LocalScale: {x: 0.8875894, y: 0.6251581, z: 0.1658697}
   m_Children: []
   m_Father: {fileID: 88173722}
   m_RootOrder: 2

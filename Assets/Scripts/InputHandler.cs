@@ -23,7 +23,7 @@ namespace SA
             {
                 if (!unitController.isInteracting)
                 {
-                    unitController.PlayAnimation("attack 1");
+                    unitController.PlayAction(unitController.actions[0]);
                 }
             }
 
@@ -31,7 +31,7 @@ namespace SA
             {
                 if (!unitController.isInteracting)
                 {
-                    unitController.PlayAnimation("attack 2");
+                    unitController.PlayAction(unitController.actions[1]);
                 }
             }
         }

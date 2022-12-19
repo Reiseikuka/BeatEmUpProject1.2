@@ -16,6 +16,11 @@ namespace SA
 
         public float attackDistance = 2;
 
+        private void Start()
+        {
+            unitController.isAI = true;
+        }
+
         private void Update()
         {
             if (target == null)
@@ -38,9 +43,9 @@ namespace SA
                     attackTime -= Time.deltaTime;
                 }else
                 {
-                    if(!unitController.isInteracting)
+                    if (!unitController.isInteracting)
                     {
-                        unitController.PlayAnimation("attack 1");
+                        unitController.PlayAction(unitController.actions[0]);
                         attackTime = attackRate;                        
                     }
                 }
