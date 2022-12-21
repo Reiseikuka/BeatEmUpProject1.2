@@ -1668,6 +1668,7 @@ GameObject:
   - component: {fileID: 2128224467}
   - component: {fileID: 2128224466}
   - component: {fileID: 2128224465}
+  - component: {fileID: 2128224468}
   m_Layer: 6
   m_Name: Hit - Box
   m_TagString: Untagged
@@ -1751,3 +1752,15 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128224463}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2128224468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128224463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b6228a1c9ec09d40b56b1577f7a6986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
