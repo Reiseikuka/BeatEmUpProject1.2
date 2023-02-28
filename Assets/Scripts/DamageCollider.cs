@@ -18,11 +18,9 @@ namespace SA
             {
                 if (u != owner)
                 {
-                    if (u.team != owner.team || owner.getLastAction.canHitAllies)
-                    {
-                         u.OnHit(owner.getLastAction, owner.isLookingLeft);
-                    }
+                        u.OnHit(owner.getLastAction, owner.transform.position);
                 }
+
             }
         }
     }

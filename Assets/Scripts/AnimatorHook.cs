@@ -38,11 +38,6 @@ namespace SA
             {
                 deltaPosition = anim.deltaPosition / Time.deltaTime;
             }
-
-            public void SetIsDead()
-            {
-                anim.SetBool("isDead", true);
-            }
     }
 }
 

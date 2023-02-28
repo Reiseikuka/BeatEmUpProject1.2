@@ -342,11 +342,10 @@ MonoBehaviour:
   holder: {fileID: 912910893}
   horizontalSpeed: 0.8
   verticalSpeed: 0.65
-  isLookingLeft: 0
   isAI: 1
   actions:
   - actionAnim: attack 1
-    damageType: 2
+    damageType: 0
 --- !u!114 &430255763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,7 +1335,6 @@ MonoBehaviour:
   holder: {fileID: 392582262}
   horizontalSpeed: 0.8
   verticalSpeed: 0.65
-  isLookingLeft: 0
   isAI: 0
   actions:
   - actionAnim: attack 1

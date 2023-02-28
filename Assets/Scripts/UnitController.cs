@@ -8,17 +8,13 @@ namespace SA
     public class UnitController : MonoBehaviour
     {
        public int health = 100;
-       public int team;
        public  NavMeshAgent agent;
        AnimatorHook animatorHook;
        public Transform holder;
 
         public float horizontalSpeed = .8f;
         public float verticalSpeed = .65f;
-        public bool isLookingLeft;
         public bool isAI;
-        public bool hasBackHit;
-        public bool isDead;
 
         public ActionData[] actions;
 
@@ -40,6 +36,12 @@ namespace SA
 
         public void TickPlayer(float delta, Vector3 direction)
         {
+            if (isInteracting)
+            {
+                agent.velocity = animatorHook.deltaPosition;
+                return;
+            }
+
             direction.x *= horizontalSpeed;
             direction.z *= verticalSpeed;
 
@@ -47,27 +49,18 @@ namespace SA
 
             agent.velocity = direction; // * delta
             
-            animatorHook.Tick(isMoving);
+            animatorHook.Tick(direction.sqrMagnitude > 0);
 
-        }
-
-        public void UseRootMotion()
-        {
-            agent.velocity = animatorHook.deltaPosition;
-        }
-
-        public void HandleRotation(bool looksLeft)
-        {
+            if (isMoving)
+            {
                 Vector3 eulers = Vector3.zero;
-                isLookingLeft = false;
-                if(looksLeft)
-                {
+                if(direction.x < 0)
                     eulers.z = 180;
-                    isLookingLeft = true;
-                }
-                holder.localEulerAngles = eulers;
-        }
 
+                holder.localEulerAngles = eulers;
+            }
+
+        }
         ActionData storedAction;
 
         public ActionData getLastAction
@@ -89,40 +82,14 @@ namespace SA
             animatorHook.PlayAnimation(animName);
         }
 
-        public void SetIsDead()
+        public void OnHit(ActionData actionData, Vector3 hitter)
         {
-            animatorHook.SetIsDead();
-            isDead = true;
-        }
-        public void OnHit(ActionData actionData, bool hitterLooksLeft)
-        {
-            bool isFromBehind = false;
-
-            if(isLookingLeft && hitterLooksLeft
-               || !hitterLooksLeft && !isLookingLeft)
-            {
-                isFromBehind = true;
-            }
-
-            DamageType damageType = actionData.damageType;
-            health -= actionData.damage;
-            if (health <= 0)
-            {
-                damageType = DamageType.heavy;
-                animatorHook.SetIsDead();
-            }
-
-            if (!hasBackHit)
-            {
-                if (isFromBehind)
-                {
-                    HandleRotation(!hitterLooksLeft);
-                }
-                            
+            Vector3 direction = hitter - transform.position;
+            bool isFromBehind = direction.x < 0;
+            if (isAI)
                 isFromBehind = false;
-            }
                 
-            switch (damageType)
+            switch (actionData.damageType)
             {
                 case DamageType.light:
                     if (isFromBehind)

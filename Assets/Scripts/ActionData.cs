@@ -9,8 +9,6 @@ using UnityEngine;
         {
             public string actionAnim;
             public DamageType damageType;
-            public bool canHitAllies;
-            public int damage = 10;
         }
 
         public enum DamageType
