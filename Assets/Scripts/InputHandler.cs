@@ -17,25 +17,36 @@ namespace SA
             targetDirection.x = h;
             targetDirection.z = v;
             
-            unitController.TickPlayer(Time.deltaTime, targetDirection);
-            
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                if (!unitController.isInteracting)
-                {
-                    unitController.PlayAction(unitController.actions[0]);
-                }
-            }
 
-            if (Input.GetKeyDown(KeyCode.X))
+            if(unitController.isInteracting)
             {
-                if (!unitController.isInteracting)
+                unitController.UseRootMotion();
+            }
+            else
+            {
+                if (targetDirection.x != 0)
+                {
+                    unitController.HandleRotation(targetDirection.x < 0);
+                }
+
+                unitController.TickPlayer(Time.deltaTime, targetDirection);
+
+
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                        unitController.PlayAction(unitController.actions[0]);
+                }
+                
+                if (Input.GetKeyDown(KeyCode.X))
                 {
                     unitController.PlayAction(unitController.actions[1]);
                 }
             }
+
         }
 
-    }   
-}
+    }
+
+}   
+
 
