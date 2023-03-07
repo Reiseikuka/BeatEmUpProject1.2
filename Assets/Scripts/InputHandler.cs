@@ -10,8 +10,8 @@ namespace SA
 
         private void Update()
         {
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
             
             Vector3 targetDirection = Vector3.zero;
             targetDirection.x = h;

@@ -14,7 +14,9 @@ namespace SA
 
         public float horizontalSpeed = .8f;
         public float verticalSpeed = .65f;
+        public bool isLookingLeft;
         public bool isAI;
+
 
         public ActionData[] actions;
 
@@ -54,13 +56,16 @@ namespace SA
             if (isMoving)
             {
                 Vector3 eulers = Vector3.zero;
+                isLookingLeft = false;
                 if(direction.x < 0)
+                {
                     eulers.z = 180;
-
+                    isLookingLeft = true;
+                }
                 holder.localEulerAngles = eulers;
             }
-
         }
+
         ActionData storedAction;
 
         public ActionData getLastAction
@@ -82,10 +87,16 @@ namespace SA
             animatorHook.PlayAnimation(animName);
         }
 
-        public void OnHit(ActionData actionData, Vector3 hitter)
-        {
-            Vector3 direction = hitter - transform.position;
-            bool isFromBehind = direction.x < 0;
+        public void OnHit(ActionData actionData, bool hitterLooksLeft)
+        {   
+            bool isFromBehind = false;
+
+            if( isLookingLeft && hitterLooksLeft
+                || !hitterLooksLeft && !isLookingLeft)
+            {
+                isFromBehind = true;
+            }
+
             if (isAI)
                 isFromBehind = false;
                 

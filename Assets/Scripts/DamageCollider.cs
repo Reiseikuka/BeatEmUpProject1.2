@@ -18,7 +18,7 @@ namespace SA
             {
                 if (u != owner)
                 {
-                        u.OnHit(owner.getLastAction, owner.transform.position);
+                        u.OnHit(owner.getLastAction, owner.isLookingLeft);
                 }
 
             }
