@@ -8,6 +8,7 @@ namespace SA
     public class UnitController : MonoBehaviour
     {
        public int health = 100;
+       public int team;
        public  NavMeshAgent agent;
        AnimatorHook animatorHook;
        public Transform holder;
@@ -16,6 +17,7 @@ namespace SA
         public float verticalSpeed = .65f;
         public bool isLookingLeft;
         public bool isAI;
+        public bool hasBackHit;
 
 
         public ActionData[] actions;
@@ -38,34 +40,31 @@ namespace SA
 
         public void TickPlayer(float delta, Vector3 direction)
         {
-            if (isInteracting)
-            {
-                agent.velocity = animatorHook.deltaPosition;
-                return;
-            }
 
             direction.x *= horizontalSpeed;
             direction.z *= verticalSpeed;
-
             bool isMoving = direction.sqrMagnitude > 0;
-
             agent.velocity = direction; // * delta
-            
             animatorHook.Tick(direction.sqrMagnitude > 0);
 
-            if (isMoving)
-            {
-                Vector3 eulers = Vector3.zero;
-                isLookingLeft = false;
-                if(direction.x < 0)
-                {
-                    eulers.z = 180;
-                    isLookingLeft = true;
-                }
-                holder.localEulerAngles = eulers;
-            }
         }
 
+        public void UseRootMotion()
+        {
+            agent.velocity = animatorHook.deltaPosition;
+        }
+
+        public void HandleRotation(bool looksLeft)
+        {
+            Vector3 eulers = Vector3.zero;
+            isLookingLeft = false;
+            if(looksLeft)
+            {
+                eulers.z = 180;
+                isLookingLeft = true;
+            }
+            holder.localEulerAngles = eulers;
+        }
         ActionData storedAction;
 
         public ActionData getLastAction
@@ -97,7 +96,13 @@ namespace SA
                 isFromBehind = true;
             }
 
-            if (isAI)
+            if (!hasBackHit)
+            {
+                if (isFromBehind)
+                {
+                    HandleRotation(!hitterLooksLeft);
+                }
+            }
                 isFromBehind = false;
                 
             switch (actionData.damageType)
