@@ -18,7 +18,7 @@ namespace SA
         public bool isLookingLeft;
         public bool isAI;
         public bool hasBackHit;
-
+        public bool isDead;
 
         public ActionData[] actions;
 
@@ -86,6 +86,12 @@ namespace SA
             animatorHook.PlayAnimation(animName);
         }
 
+        public void SetIsDead()
+        {
+            animatorHook.SetIsDead();
+            isDead = true;
+        }
+
         public void OnHit(ActionData actionData, bool hitterLooksLeft)
         {   
             bool isFromBehind = false;
@@ -94,6 +100,15 @@ namespace SA
                 || !hitterLooksLeft && !isLookingLeft)
             {
                 isFromBehind = true;
+            }
+
+            DamageType damageType = actionData.damageType;
+            health -= actionData.damage;
+
+            if (health <= 0)
+            {
+                damageType  = DamageType.heavy;
+                SetIsDead();
             }
 
             if (!hasBackHit)
@@ -105,7 +120,7 @@ namespace SA
             }
                 isFromBehind = false;
                 
-            switch (actionData.damageType)
+            switch (damageType)
             {
                 case DamageType.light:
                     if (isFromBehind)

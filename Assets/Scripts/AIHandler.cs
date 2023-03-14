@@ -35,7 +35,7 @@ namespace SA
                 return;
 
           
-            if (isInteracting)
+            if (isInteracting || unitController.isDead)
             {
                 unitController.UseRootMotion();
                 return;

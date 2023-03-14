@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ad9a4750f89f642a710edc485d4527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 40
   team: 1
   agent: {fileID: 430255761}
   holder: {fileID: 912910893}
@@ -346,10 +346,12 @@ MonoBehaviour:
   isLookingLeft: 0
   isAI: 1
   hasBackHit: 0
+  isDead: 0
   actions:
   - actionAnim: attack 1
     damageType: 2
     canHitAllies: 0
+    damage: 10
 --- !u!114 &430255763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1343,10 +1345,12 @@ MonoBehaviour:
   isLookingLeft: 1
   isAI: 0
   hasBackHit: 0
+  isDead: 0
   actions:
   - actionAnim: attack 1
     damageType: 0
     canHitAllies: 0
+    damage: 10
 --- !u!114 &1590689341
 MonoBehaviour:
   m_ObjectHideFlags: 0
