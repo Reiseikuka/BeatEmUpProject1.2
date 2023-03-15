@@ -84,7 +84,7 @@ namespace SA
             
             float distance = Vector3.Distance(transform.position, targetPosition);
             
-            if (distance > attackDistance)
+            if (distance > unitController.agent.stoppingDistance)
             {
                 unitController.agent.isStopped = false;
                 unitController.agent.SetDestination(targetPosition);
