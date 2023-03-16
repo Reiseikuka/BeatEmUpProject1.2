@@ -12,11 +12,20 @@ namespace SA
         {
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
-            
+            bool isKeyZ= Input.GetKeyDown(KeyCode.Z);
+
+
             Vector3 targetDirection = Vector3.zero;
             targetDirection.x = h;
             targetDirection.z = v;
-            
+
+            if (unitController.canDoCombo)
+            {
+                if (isKeyZ)
+                {
+                    unitController.isCombo();
+                }
+            }
 
             if (unitController.isInteracting)
             {
@@ -32,16 +41,17 @@ namespace SA
             
                 unitController.TickPlayer(Time.deltaTime, targetDirection);
 
-                if (Input.GetKeyDown(KeyCode.Z))
+                if (isKeyZ)
                 {
                         unitController.PlayAction(unitController.actions[0]);
                 }
 
-                if (Input.GetKeyDown(KeyCode.X))
+             /*   if (Input.GetKeyDown(KeyCode.X))
                 {
                         unitController.PlayAction(unitController.actions[1]);
 
                 }   
+            */
 
             } 
 

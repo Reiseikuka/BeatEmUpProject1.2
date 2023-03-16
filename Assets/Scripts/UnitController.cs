@@ -28,6 +28,14 @@ namespace SA
             }
         }
 
+        public bool canDoCombo
+        {
+            get
+            {
+                return animatorHook.canEnableCombo;
+            }
+        }
+
         public ActionData[] actions;
 
         public bool isInteracting
@@ -160,6 +168,11 @@ namespace SA
                 default:
                     break;
             }
+        }
+
+        public void isCombo()
+        {
+            animatorHook.SetIsCombo();
         }
 
     }

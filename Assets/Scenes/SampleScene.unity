@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ad9a4750f89f642a710edc485d4527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  health: 100
   team: 1
   agent: {fileID: 430255761}
   holder: {fileID: 912910893}
@@ -548,10 +548,11 @@ MonoBehaviour:
   maxDeadTime: 0
   attackRate: 1.5
   attackDistance: 0.5
+  rotateDistance: 2
   verticalThreshold: 0.1
   rotationThreshold: 0.5
-  isCloseToTargetPosition: 0
-  closetoEnemy: 0
+  forceStopDistance: 0.3
+  forceStop: 0
 --- !u!4 &430255764
 Transform:
   m_ObjectHideFlags: 0
@@ -655,7 +656,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20436
+  m_Name: pb_Mesh20472
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1197,7 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ad9a4750f89f642a710edc485d4527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  health: 100
   team: 1
   agent: {fileID: 1025379894}
   holder: {fileID: 842165024}
@@ -1230,10 +1231,11 @@ MonoBehaviour:
   maxDeadTime: 0
   attackRate: 1.5
   attackDistance: 0.5
+  rotateDistance: 2
   verticalThreshold: 0.1
   rotationThreshold: 0.5
-  isCloseToTargetPosition: 0
-  closetoEnemy: 0
+  forceStopDistance: 0.3
+  forceStop: 0
 --- !u!4 &1025379897
 Transform:
   m_ObjectHideFlags: 0

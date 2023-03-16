@@ -10,6 +10,13 @@ namespace SA
             Animator anim;
 
             public Vector3 deltaPosition;
+            public bool canEnableCombo
+            {
+                get
+                {
+                    return anim.GetBool("canEnableCombo");
+                }
+            }
             
             public bool isInteracting
             {
@@ -42,6 +49,11 @@ namespace SA
             public void SetIsDead()
             {
                 anim.SetBool("isDead", true);
+            }
+
+            public void SetIsCombo()
+            {
+                anim.SetBool("isCombo", true);
             }
     }
 }
