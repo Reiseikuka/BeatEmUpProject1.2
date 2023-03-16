@@ -20,6 +20,14 @@ namespace SA
         public bool hasBackHit;
         public bool isDead;
 
+        public Vector3 position
+        {
+            get
+            {
+                return transform.position;
+            }
+        }
+
         public ActionData[] actions;
 
         public bool isInteracting

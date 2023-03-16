@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace SA
 {
@@ -8,7 +9,7 @@ namespace SA
     {
         public UnitController unitController;
 
-        public Transform target;
+        public UnitController enemy;
 
         public float minDeadTime;
         public float maxDeadTime;
@@ -28,6 +29,11 @@ namespace SA
         public float attackRate = 1.5f;
 
         public float attackDistance = 2;
+        public float rotateDistance = 2;
+        public float verticalThreshold = .1f;
+        public float rotationThreshold = .5f;
+        public float forceStopDistance = .3f;
+        public bool forceStop;
 
         float verticalSpeed
         {
@@ -51,14 +57,15 @@ namespace SA
             unitController.isAI = true;
         }
 
-    
         private void Update()
         {
-            if (target == null)
+            if (enemy == null)
                 return;
 
           
             float delta = Time.deltaTime;
+            Vector3 myPosition = transform.position;
+            Vector3 enemyPosition = enemy.position;
 
             if (isInteracting || unitController.isDead)
             {
@@ -72,42 +79,70 @@ namespace SA
                 return;
             }
 
-            Vector3 directionToTarget = target.position - transform.position;
+            Vector3 directionToTarget = enemyPosition - myPosition;
             directionToTarget.Normalize();
             directionToTarget.z = 0;
 
-            Vector3 targetPosition = target.position +  (directionToTarget * -1) * attackDistance;
+            Vector3 targetPosition = enemyPosition +  (directionToTarget * -1) * attackDistance;
+        
+            bool isCloseToTargetPosition = IsCloseToTargetPosition(myPosition, targetPosition);
+            bool closeToEnemy_NoVertical =  isCloseToEnemy_NoVertical(myPosition, enemyPosition); 
+            bool closeToEnemy_General =     isCloseToEnemy_General(myPosition, enemyPosition);
 
-            Debug.DrawRay(targetPosition + Vector3.up, Vector3.forward, Color.red);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, forceStopDistance);
+            forceStop = false;
 
-            //unitController.agent.SetDestination(target.position);
-            
-            float distance = Vector3.Distance(transform.position, targetPosition);
-            
-            if (distance > unitController.agent.stoppingDistance)
+            foreach (var item in colliders)
+            {
+                AIHandler a = item.transform.GetComponentInParent<AIHandler>();
+                if (a != null)
+                {
+                    if (a != this)
+                    {
+                        if (!a.forceStop)
+                        {
+                            forceStop = true;
+                        }
+                    }
+                }
+            }
+
+            if (!forceStop && !closeToEnemy_NoVertical && !isCloseToTargetPosition)
             {
                 unitController.agent.isStopped = false;
                 unitController.agent.SetDestination(targetPosition);
-                
-            
+                                
                 Vector3 v = unitController.agent.velocity;
                 v.z  = Mathf.Clamp(v.z, -verticalSpeed, verticalSpeed);
                 unitController.agent.velocity = v;
 
-                if (Mathf.Abs(v.x) > .2f)
-                {
+               // NavMeshHit navHit;
+               // if( NavMesh.Raycast(transform.position, 
+               //     unitController.agent.desiredVelocity, out navHit, NavMesh.AllAreas))
+               //     {
+               //         unitController.agent.isStopped = true;
+               //      }
 
-                    unitController.HandleRotation(v.x < 0);
+
+                if (!closeToEnemy_General)
+                {
+                    unitController.HandleRotation(unitController.agent.velocity.x < 0);
+                }else
+                {
+                    unitController.HandleRotation(directionToTarget.x < 0);
                 }
+
             }
             else
             {
+
                 unitController.agent.isStopped = true;
                 unitController.HandleRotation(directionToTarget.x < 0);
 
                 if (attackTime > 0)
                 {
-                    attackTime -= delta;
+                    if (!forceStop)
+                        attackTime -= delta;
                 }else
                 {
                     unitController.PlayAction(unitController.actions[0]);
@@ -117,6 +152,29 @@ namespace SA
             }
 
             unitController.TickPlayer(delta, unitController.agent.desiredVelocity);
+        }
+
+        public bool IsCloseToTargetPosition(Vector3 p1, Vector3 p2)
+        {
+            float distance = Vector3.Distance(p1, p2);
+            return distance < unitController.agent.stoppingDistance;
+        }
+
+        public bool isCloseToEnemy_NoVertical(Vector3 p1, Vector3 p2)
+        {
+            float dif = p1.z - p2.z;
+            if (Mathf.Abs(dif) < verticalThreshold)
+            {
+                return Vector3.Distance(p1, p2) < attackDistance;
+            } else
+            {
+                return false;
+            }
+            
+        }
+        public bool isCloseToEnemy_General(Vector3 p1, Vector3 p2)
+        {
+            return Vector3.Distance(p1, p2) < rotateDistance;
         }
     }
 }
