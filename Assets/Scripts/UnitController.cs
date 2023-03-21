@@ -91,6 +91,26 @@ namespace SA
             }
         }
 
+        public void DetectAction(InputHandler.InputFrame f)
+        {
+            if (f.attack == false)
+                return;
+                
+            foreach (var a in actions)
+            {
+                if (a.inputs.attack == f.attack 
+                && a.inputs.down == f.down &&
+                   a.inputs.left == f.left &&
+                   a.inputs.right == f.right &&
+                   a.inputs.up ==    f.up &&
+                   a.inputs.jump == f.jump)
+                {
+                    PlayAction(a);
+                    break;
+                }
+            }
+        }
+
         public void PlayAction(ActionData actionData)
         {
             PlayAnimation(actionData.actionAnim);

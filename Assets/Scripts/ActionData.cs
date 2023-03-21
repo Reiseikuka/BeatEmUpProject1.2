@@ -11,6 +11,8 @@ using UnityEngine;
             public DamageType damageType;
             public bool canHitAllies;
             public int damage = 10;
+
+            public InputHandler.InputFrame inputs;
         }
 
         public enum DamageType

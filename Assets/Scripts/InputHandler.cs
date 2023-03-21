@@ -7,13 +7,43 @@ namespace SA
     public class InputHandler : MonoBehaviour
     {
         public UnitController unitController;
+        public InputFrame inputFrame;
 
         private void Update()
         {
+
+            inputFrame.attack = false;
+            inputFrame.jump = false;
+            inputFrame.left = false;
+            inputFrame.right = false;
+            inputFrame.up = false;
+            inputFrame.down = false;
+
+
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
-            bool isKeyZ= Input.GetKeyDown(KeyCode.Z);
+            inputFrame.attack = Input.GetKeyDown(KeyCode.Z);
                         //Try getButton next
+
+            if (h > 0.2f)
+            {   
+                inputFrame.right = true;
+            }
+
+            if (v < -.2f)
+            {
+                inputFrame.left = true;
+            }
+
+            if (v > .2f)
+            {
+                inputFrame.up = true;
+            }
+
+            if (v < -.2f)
+            {
+                inputFrame.down = true;
+            }
 
             Vector3 targetDirection = Vector3.zero;
             targetDirection.x = h;
@@ -21,7 +51,7 @@ namespace SA
 
             if (unitController.canDoCombo)
             {
-                if (isKeyZ)
+                if (inputFrame.attack)
                 {
                     unitController.isCombo();
                 }
@@ -40,11 +70,7 @@ namespace SA
                 }
             
                 unitController.TickPlayer(Time.deltaTime, targetDirection);
-
-                if (isKeyZ)
-                {
-                        unitController.PlayAction(unitController.actions[0]);
-                }
+                unitController.DetectAction(inputFrame);
 
              /*   if (Input.GetKeyDown(KeyCode.X))
                 {
@@ -55,6 +81,17 @@ namespace SA
 
             } 
 
+        }
+
+        [System.Serializable]
+        public class InputFrame 
+        {
+            public bool left;
+            public bool right;
+            public bool up;
+            public bool down;
+            public bool attack;
+            public bool jump;
         }
 
     }   
