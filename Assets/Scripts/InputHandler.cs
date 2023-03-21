@@ -13,7 +13,7 @@ namespace SA
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
             bool isKeyZ= Input.GetKeyDown(KeyCode.Z);
-
+                        //Try getButton next
 
             Vector3 targetDirection = Vector3.zero;
             targetDirection.x = h;
