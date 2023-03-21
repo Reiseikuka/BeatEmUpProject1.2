@@ -530,6 +530,13 @@ MonoBehaviour:
     damageType: 2
     canHitAllies: 0
     damage: 10
+    inputs:
+      left: 0
+      right: 0
+      up: 0
+      down: 0
+      attack: 0
+      jump: 0
 --- !u!114 &430255763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,6 +1220,13 @@ MonoBehaviour:
     damageType: 2
     canHitAllies: 0
     damage: 10
+    inputs:
+      left: 0
+      right: 0
+      up: 0
+      down: 0
+      attack: 0
+      jump: 0
 --- !u!114 &1025379896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,6 +1894,24 @@ MonoBehaviour:
     damageType: 0
     canHitAllies: 0
     damage: 10
+    inputs:
+      left: 0
+      right: 0
+      up: 0
+      down: 0
+      attack: 1
+      jump: 0
+  - actionAnim: up_attack
+    damageType: 2
+    canHitAllies: 0
+    damage: 30
+    inputs:
+      left: 0
+      right: 0
+      up: 1
+      down: 0
+      attack: 1
+      jump: 0
 --- !u!114 &1590689341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1893,6 +1925,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitController: {fileID: 1590689340}
+  inputFrame:
+    left: 0
+    right: 0
+    up: 0
+    down: 0
+    attack: 0
+    jump: 0
 --- !u!4 &1590689342
 Transform:
   m_ObjectHideFlags: 0
