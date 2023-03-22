@@ -73,6 +73,8 @@ namespace SA
                 return;
             }
 
+            unitController.agent.enabled = true;
+
             if (deadTime > 0)
             {
                 deadTime -= delta;

@@ -10,6 +10,8 @@ namespace SA
             Animator anim;
 
             public Vector3 deltaPosition;
+            UnitController owner;
+
             public bool canEnableCombo
             {
                 get
@@ -28,6 +30,7 @@ namespace SA
             private void Start()
             {
                  anim = GetComponent<Animator>();
+                 owner = GetComponentInParent<UnitController>();
             }
 
             public void Tick(bool isMoving)
@@ -62,6 +65,17 @@ namespace SA
             {
                 anim.SetBool("isCombo", true);
             }
+
+            public void CloseAgent()
+            {
+                owner.agent.enabled = false; 
+            }
+
+            public void OpenAgent()
+            {
+                owner.agent.enabled = true;   
+            }
+
     }
 }
 
