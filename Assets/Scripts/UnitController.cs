@@ -137,9 +137,9 @@ namespace SA
             storedAction = actionData;
         }
 
-        public void PlayAnimation(string animName)
+        public void PlayAnimation(string animName, float crossfadeTime = 0)
         {
-            animatorHook.PlayAnimation(animName);
+            animatorHook.PlayAnimation(animName, crossfadeTime);
         }
 
         public void SetIsDead()
@@ -148,7 +148,7 @@ namespace SA
             isDead = true;
         }
 
-        public void OnHit(ActionData actionData, bool hitterLooksLeft)
+        public void OnHit(ActionData actionData, bool hitterLooksLeft, UnitController attacker)
         {   
             bool isFromBehind = false;
 
@@ -208,7 +208,15 @@ namespace SA
                 default:
                     break;
             }
+
+            if (actionData.onHitOverrideMyAnimation)
+            {
+                attacker.PlayAnimation(
+                    actionData.myOverrideAnimation,
+                    actionData.crossfadeTime);
+            }
         }
+
 
         public void isCombo()
         {

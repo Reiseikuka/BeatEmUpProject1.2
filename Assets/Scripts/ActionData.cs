@@ -12,6 +12,9 @@ using UnityEngine;
             public bool canHitAllies;
             public int damage = 10;
             public bool isDeterministic;
+            public bool onHitOverrideMyAnimation;
+            public string myOverrideAnimation;
+            public float crossfadeTime;
             public InputHandler.InputFrame inputs;
         }
 

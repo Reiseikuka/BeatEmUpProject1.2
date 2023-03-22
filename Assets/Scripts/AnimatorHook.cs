@@ -35,8 +35,15 @@ namespace SA
                 float v = (isMoving) ? 1 : 0;
                 anim.SetFloat("move", v);
             }
-            public void  PlayAnimation(string animName)
+            public void  PlayAnimation(string animName, float crossfadeTime = 0)
             {
+                if (crossfadeTime > 0.01f)
+                {
+                    anim.CrossFadeInFixedTime(animName, crossfadeTime);
+                }else
+                {
+                    anim.Play(animName);
+                }
                 anim.Play(animName);
                 anim.SetBool("isInteracting", true);
             }
