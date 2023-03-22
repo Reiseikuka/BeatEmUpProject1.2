@@ -93,23 +93,35 @@ namespace SA
 
         public void DetectAction(InputHandler.InputFrame f)
         {
-            if (f.attack == false)
+            if (f.attack == false && f.jump == false)
                 return;
                 
             foreach (var a in actions)
             {
-                if (a.inputs.attack == f.attack 
-                && a.inputs.down == f.down &&
-                   a.inputs.left == f.left &&
-                   a.inputs.right == f.right &&
-                   a.inputs.up ==    f.up &&
-                   a.inputs.jump == f.jump)
+                if (a.isDeterministic)
                 {
-                    PlayAction(a);
-                    break;
+                    if (a.inputs.attack == f.attack 
+                    && a.inputs.down == f.down &&
+                    a.inputs.left == f.left &&
+                    a.inputs.right == f.right &&
+                    a.inputs.up ==    f.up &&
+                    a.inputs.jump == f.jump)
+                    {
+                        PlayAction(a);
+                        break;
+                    }
+                } else
+                {
+                    if (a.inputs.attack ==  f.attack 
+                        || a.inputs.jump == f.jump)
+                    {
+                        PlayAction(a);
+                        break;
+                    }
                 }
             }
         }
+
 
         public void PlayAction(ActionData actionData)
         {

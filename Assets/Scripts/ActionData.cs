@@ -11,7 +11,7 @@ using UnityEngine;
             public DamageType damageType;
             public bool canHitAllies;
             public int damage = 10;
-
+            public bool isDeterministic;
             public InputHandler.InputFrame inputs;
         }
 

@@ -23,6 +23,7 @@ namespace SA
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
             inputFrame.attack = Input.GetKeyDown(KeyCode.Z);
+            inputFrame.jump = Input.GetKeyDown(KeyCode.Space);
                         //Try getButton next
 
             if (h > 0.2f)
