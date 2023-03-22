@@ -205,6 +205,9 @@ namespace SA
                         PlayAnimation("knockdown_front");             
                     }
                     break;
+                case DamageType.bounce:
+                    PlayAnimation("bounce"); 
+                    break;
                 default:
                     break;
             }
