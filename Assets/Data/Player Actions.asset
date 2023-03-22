@@ -20,6 +20,9 @@ MonoBehaviour:
       canHitAllies: 0
       damage: 10
       isDeterministic: 1
+      onHitOverrideMyAnimation: 0
+      myOverrideAnimation: 
+      crossfadeTime: 0
       inputs:
         left: 0
         right: 0
@@ -28,10 +31,13 @@ MonoBehaviour:
         attack: 1
         jump: 0
     - actionAnim: up_attack
-      damageType: 2
+      damageType: 3
       canHitAllies: 0
-      damage: 20
+      damage: 15
       isDeterministic: 1
+      onHitOverrideMyAnimation: 0
+      myOverrideAnimation: 
+      crossfadeTime: 0
       inputs:
         left: 0
         right: 0
@@ -44,6 +50,9 @@ MonoBehaviour:
       canHitAllies: 0
       damage: 0
       isDeterministic: 0
+      onHitOverrideMyAnimation: 0
+      myOverrideAnimation: 
+      crossfadeTime: 0
       inputs:
         left: 0
         right: 0
@@ -58,6 +67,9 @@ MonoBehaviour:
       canHitAllies: 0
       damage: 5
       isDeterministic: 0
+      onHitOverrideMyAnimation: 0
+      myOverrideAnimation: 
+      crossfadeTime: 0
       inputs:
         left: 0
         right: 0

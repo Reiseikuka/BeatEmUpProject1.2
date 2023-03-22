@@ -150,6 +150,9 @@ namespace SA
 
         public void OnHit(ActionData actionData, bool hitterLooksLeft, UnitController attacker)
         {   
+            if (isDead)
+                return;
+
             bool isFromBehind = false;
 
             if( isLookingLeft && hitterLooksLeft
@@ -163,7 +166,8 @@ namespace SA
 
             if (health <= 0)
             {
-                damageType  = DamageType.heavy;
+                if (damageType != DamageType.bounce)
+                    damageType  = DamageType.heavy;
                 SetIsDead();
             }
 
@@ -206,7 +210,7 @@ namespace SA
                     }
                     break;
                 case DamageType.bounce:
-                    PlayAnimation("bounce"); 
+                    PlayAnimation("bounce", 0.1f); 
                     break;
                 default:
                     break;
