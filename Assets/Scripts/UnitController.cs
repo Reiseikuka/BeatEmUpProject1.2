@@ -36,7 +36,15 @@ namespace SA
             }
         }
 
-        public ActionData[] actions;
+        public int actionsIndex;
+        public ActionDataHolder actionDataHolder;
+
+        ActionData[] currentActionData{
+            get
+            {
+                return actionDataHolder.GetActions(actionsIndex);
+            }
+        }
 
         public bool isInteracting
         {
@@ -96,7 +104,7 @@ namespace SA
             if (f.attack == false && f.jump == false)
                 return;
                 
-            foreach (var a in actions)
+            foreach (var a in currentActionData)
             {
                 if (a.isDeterministic)
                 {
@@ -205,6 +213,16 @@ namespace SA
         public void isCombo()
         {
             animatorHook.SetIsCombo();
+        }
+
+        public void LoadActionData(int index)
+        {
+            actionsIndex = index;
+        }
+
+        public void ResetActionData()
+        {
+            actionsIndex = 0;
         }
 
     }

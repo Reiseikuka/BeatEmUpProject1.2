@@ -145,7 +145,7 @@ namespace SA
                         attackTime -= delta;
                 }else
                 {
-                    unitController.PlayAction(unitController.actions[0]);
+                    //unitController.PlayAction(unitController.defaultActions[0]);
                     attackTime = attackRate;    
                     deadTime = getDeadTimeRate;                    
                 }
