@@ -20,7 +20,8 @@ using UnityEngine;
 
         public enum DamageType
         {
-            light, mid, heavy
+            light, mid, heavy, bounce
+            //if bounce, sent them up
         }
         
     }

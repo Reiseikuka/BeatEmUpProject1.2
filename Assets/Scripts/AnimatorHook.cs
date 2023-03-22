@@ -76,6 +76,15 @@ namespace SA
                 owner.agent.enabled = true;   
             }
 
+            public void SetIsInteracting(int status)
+            {
+                anim.SetBool("isInteracting", status == 1);
+            }
+
+            public void LoadActionData(int actionIndex)
+            {
+                owner.LoadActionData(actionIndex);
+            }
     }
 }
 
