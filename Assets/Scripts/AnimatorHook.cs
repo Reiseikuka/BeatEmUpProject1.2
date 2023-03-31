@@ -68,12 +68,12 @@ namespace SA
 
             public void CloseAgent()
             {
-                owner.agent.enabled = false; 
+                //owner.agent.enabled = false; 
             }
 
             public void OpenAgent()
             {
-                owner.agent.enabled = true;   
+                //owner.agent.enabled = true;   
             }
 
             public void SetIsInteracting(int status)

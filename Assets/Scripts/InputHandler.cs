@@ -48,7 +48,7 @@ namespace SA
 
             Vector3 targetDirection = Vector3.zero;
             targetDirection.x = h;
-            targetDirection.z = v;
+            targetDirection.y = v;
 
             if (unitController.canDoCombo)
             {

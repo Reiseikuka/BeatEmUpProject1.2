@@ -9,7 +9,6 @@ namespace SA
     {
        public int health = 100;
        public int team;
-       public  NavMeshAgent agent;
        AnimatorHook animatorHook;
        public Transform holder;
 
@@ -19,6 +18,8 @@ namespace SA
         public bool isAI;
         public bool hasBackHit;
         public bool isDead;
+        public LayerMask walkLayer;
+        
 
         public Vector3 position
         {
@@ -56,26 +57,65 @@ namespace SA
 
         private void Start()
         {
-            agent = GetComponent<NavMeshAgent>();
             animatorHook = GetComponentInChildren<AnimatorHook>();
-
-            agent.updateRotation = false;
         }
 
         public void TickPlayer(float delta, Vector3 direction)
         {
 
-            direction.x *= horizontalSpeed;
-            direction.z *= verticalSpeed;
+            direction.x *= horizontalSpeed * delta;
+            direction.y *= verticalSpeed * delta;
             bool isMoving = direction.sqrMagnitude > 0;
-            agent.velocity = direction; // * delta
-            animatorHook.Tick(direction.sqrMagnitude > 0);
+
+            animatorHook.Tick(isMoving);
+
+            Vector3 targetPosition = transform.position + direction;
+            MoveOnPosition(targetPosition);
 
         }
 
         public void UseRootMotion()
         {
-            agent.velocity = animatorHook.deltaPosition;
+            //agent.velocity = animatorHook.deltaPosition;
+            Vector3 targetPosition = transform.position + animatorHook.deltaPosition;
+        }
+
+        void MoveOnPosition(Vector3 targetPosition)
+        {
+
+            Collider2D[] colliders = Physics2D.OverlapPointAll(targetPosition, walkLayer);
+            bool isValid = false;
+
+            foreach (var item in colliders)
+            {
+
+                TBlockMovement block= item.GetComponent<TBlockMovement>();
+                if (block != null)
+                {
+                    isValid = false;
+                    break;
+                }
+
+                TWalkable w = item.GetComponent<TWalkable>();
+                if (w != null)
+                {
+                    if (isAI)
+                    {
+                        isValid = true;
+                    }else
+                    {
+                        if (w.isPlayer)
+                        {
+                            isValid = true;
+                        }
+                    }
+                }
+            }
+
+            if (isValid)
+            {
+                transform.position = targetPosition;
+            }
         }
 
         public void HandleRotation(bool looksLeft)
@@ -84,7 +124,7 @@ namespace SA
             isLookingLeft = false;
             if(looksLeft)
             {
-                eulers.z = 180;
+                eulers.y = 180;
                 isLookingLeft = true;
             }
             holder.localEulerAngles = eulers;

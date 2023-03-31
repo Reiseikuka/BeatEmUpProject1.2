@@ -39,8 +39,9 @@ namespace SA
         {
             get
             {
-                float v = unitController.agent.speed - .1f;
-                return v;
+              /*  float v = unitController.agent.speed - .1f;
+                return v; */
+                return 0;
             }
         }
 
@@ -63,7 +64,7 @@ namespace SA
                 return;
 
           
-            float delta = Time.deltaTime;
+            /*float delta = Time.deltaTime;
             Vector3 myPosition = transform.position;
             Vector3 enemyPosition = enemy.position;
 
@@ -131,7 +132,7 @@ namespace SA
                     unitController.HandleRotation(unitController.agent.velocity.x < 0);
                 }else
                 {
-                    unitController.HandleRotation(directionToTarget.x < 0);
+                    unitController.HandleRotation(directionToTarget.x < 0); 
                 }
 
             }
@@ -153,14 +154,14 @@ namespace SA
                 }
             }
 
-            unitController.TickPlayer(delta, unitController.agent.desiredVelocity);
+            unitController.TickPlayer(delta, unitController.agent.desiredVelocity);*/
         }
 
-        public bool IsCloseToTargetPosition(Vector3 p1, Vector3 p2)
+      /*  public bool IsCloseToTargetPosition(Vector3 p1, Vector3 p2)
         {
             float distance = Vector3.Distance(p1, p2);
             return distance < unitController.agent.stoppingDistance;
-        }
+        } */
 
         public bool isCloseToEnemy_NoVertical(Vector3 p1, Vector3 p2)
         {
