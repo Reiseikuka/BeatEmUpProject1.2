@@ -74,10 +74,11 @@ namespace SA
 
         }
 
-        public void UseRootMotion()
+        public void UseRootMotion(float delta)
         {
             //agent.velocity = animatorHook.deltaPosition;
-            Vector3 targetPosition = transform.position + animatorHook.deltaPosition;
+            Vector3 targetPosition = transform.position + animatorHook.deltaPosition * delta;
+            MoveOnPosition(targetPosition);
         }
 
         void MoveOnPosition(Vector3 targetPosition)
@@ -88,12 +89,14 @@ namespace SA
 
             foreach (var item in colliders)
             {
-
-                TBlockMovement block= item.GetComponent<TBlockMovement>();
-                if (block != null)
+                if (!isAI)
                 {
-                    isValid = false;
-                    break;
+                    TBlockMovement block= item.GetComponent<TBlockMovement>();
+                    if (block != null)
+                    {
+                        isValid = false;
+                        break;
+                    }
                 }
 
                 TWalkable w = item.GetComponent<TWalkable>();

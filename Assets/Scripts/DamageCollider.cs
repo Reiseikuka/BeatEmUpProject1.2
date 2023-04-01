@@ -11,7 +11,8 @@ namespace SA
         {
             owner = GetComponentInParent<UnitController>();
         }
-        private void OnTriggerEnter(Collider other)
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
             UnitController u = other.GetComponentInParent<UnitController>();
             if (u != null)

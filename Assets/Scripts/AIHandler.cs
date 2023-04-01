@@ -27,23 +27,16 @@ namespace SA
         float attackTime = 1;
 
         public float attackRate = 1.5f;
-
         public float attackDistance = 2;
+        public float stopDistance = 1;
+
         public float rotateDistance = 2;
         public float verticalThreshold = .1f;
         public float rotationThreshold = .5f;
+
         public float forceStopDistance = .3f;
         public bool forceStop;
 
-        float verticalSpeed
-        {
-            get
-            {
-              /*  float v = unitController.agent.speed - .1f;
-                return v; */
-                return 0;
-            }
-        }
 
         public bool isInteracting
         {
@@ -58,23 +51,23 @@ namespace SA
             unitController.isAI = true;
         }
 
+
         private void Update()
         {
             if (enemy == null)
                 return;
 
           
-            /*float delta = Time.deltaTime;
+            float delta = Time.deltaTime;
             Vector3 myPosition = transform.position;
             Vector3 enemyPosition = enemy.position;
 
             if (isInteracting || unitController.isDead)
             {
-                unitController.UseRootMotion();
+                unitController.UseRootMotion(delta);
                 return;
             }
-
-            unitController.agent.enabled = true;
+            
 
             if (deadTime > 0)
             {
@@ -110,27 +103,21 @@ namespace SA
                 }
             }
 
+            Vector3 targetDirection = Vector3.zero;
+
             if (!forceStop && !closeToEnemy_NoVertical && !isCloseToTargetPosition)
             {
-                unitController.agent.isStopped = false;
-                unitController.agent.SetDestination(targetPosition);
-                                
-                Vector3 v = unitController.agent.velocity;
-                v.z  = Mathf.Clamp(v.z, -verticalSpeed, verticalSpeed);
-                unitController.agent.velocity = v;
-
-               // NavMeshHit navHit;
-               // if( NavMesh.Raycast(transform.position, 
-               //     unitController.agent.desiredVelocity, out navHit, NavMesh.AllAreas))
-               //     {
-               //         unitController.agent.isStopped = true;
-               //      }
+                
+                targetDirection = targetPosition - transform.position;
+                targetDirection.Normalize();
+                Debug.DrawLine(transform.position, targetDirection);
 
 
                 if (!closeToEnemy_General)
                 {
-                    unitController.HandleRotation(unitController.agent.velocity.x < 0);
-                }else
+                    unitController.HandleRotation(targetDirection.x < 0);
+                }
+                else
                 {
                     unitController.HandleRotation(directionToTarget.x < 0); 
                 }
@@ -138,8 +125,6 @@ namespace SA
             }
             else
             {
-
-                unitController.agent.isStopped = true;
                 unitController.HandleRotation(directionToTarget.x < 0);
 
                 if (attackTime > 0)
@@ -148,20 +133,20 @@ namespace SA
                         attackTime -= delta;
                 }else
                 {
-                    //unitController.PlayAction(unitController.defaultActions[0]);
+                    unitController.PlayAction(unitController.actionDataHolder.actions[0].actions[0]);
                     attackTime = attackRate;    
                     deadTime = getDeadTimeRate;                    
                 }
             }
 
-            unitController.TickPlayer(delta, unitController.agent.desiredVelocity);*/
+            unitController.TickPlayer(delta, targetDirection);
         }
 
-      /*  public bool IsCloseToTargetPosition(Vector3 p1, Vector3 p2)
+        public bool IsCloseToTargetPosition(Vector3 p1, Vector3 p2)
         {
             float distance = Vector3.Distance(p1, p2);
-            return distance < unitController.agent.stoppingDistance;
-        } */
+            return distance < stopDistance;
+        } 
 
         public bool isCloseToEnemy_NoVertical(Vector3 p1, Vector3 p2)
         {

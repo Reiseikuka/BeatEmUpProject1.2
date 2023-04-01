@@ -50,17 +50,17 @@ namespace SA
             targetDirection.x = h;
             targetDirection.y = v;
 
-            if (unitController.canDoCombo)
-            {
-                if (inputFrame.attack)
-                {
-                    unitController.isCombo();
-                }
-            }
-
             if (unitController.isInteracting)
             {
-                unitController.UseRootMotion();
+                if (unitController.canDoCombo)
+                {
+                    if (inputFrame.attack)
+                    {
+                        unitController.isCombo();
+                    }
+                }
+
+                unitController.UseRootMotion(Time.deltaTime);
             }
             else
             {
