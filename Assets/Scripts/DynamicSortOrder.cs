@@ -18,7 +18,7 @@ namespace SA
                 position = origin.position;
             }
 
-            int sortOrder = Mathf.RoundToInt(position.y * 10);
+            int sortOrder = Mathf.RoundToInt(position.y * 100 + 10);
             spriteRenderer.sortingOrder = -sortOrder;
         }
     }

@@ -309,7 +309,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0050267875, y: 0.006756544}
@@ -432,7 +432,7 @@ MonoBehaviour:
   team: 1
   holder: {fileID: 912910893}
   horizontalSpeed: 1
-  verticalSpeed: 0.65
+  verticalSpeed: 0.4
   isLookingLeft: 0
   isAI: 1
   hasBackHit: 0
@@ -456,15 +456,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitController: {fileID: 430255762}
   enemy: {fileID: 1590689340}
-  minDeadTime: 0
-  maxDeadTime: 0
+  minDeadTime: 0.5
+  maxDeadTime: 1
   attackRate: 1.5
   attackDistance: 0.4
-  stopDistance: 0.3
+  stopDistance: 0.2
   rotateDistance: 2
   verticalThreshold: 0.1
   rotationThreshold: 0.5
-  forceStopDistance: 0.3
+  forceStopDistance: 0.2
   forceStop: 0
 --- !u!4 &430255764
 Transform:
@@ -1226,7 +1226,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0050267875, y: 0.006756544}

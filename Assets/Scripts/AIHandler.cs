@@ -24,13 +24,13 @@ namespace SA
         }
         
         float deadTime;
-        float attackTime = 1;
 
+        float attackTime = 1;
         public float attackRate = 1.5f;
         public float attackDistance = 2;
         public float stopDistance = 1;
-
         public float rotateDistance = 2;
+        
         public float verticalThreshold = .1f;
         public float rotationThreshold = .5f;
 
