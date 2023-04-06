@@ -21,6 +21,9 @@ namespace SA
         public LayerMask walkLayer;
         
 
+        public delegate void OnDeath();
+        public OnDeath onDeath;
+
         public Vector3 position
         {
             get
@@ -189,6 +192,7 @@ namespace SA
         {
             animatorHook.SetIsDead();
             isDead = true;
+            onDeath?.Invoke();
         }
 
         public void OnHit(ActionData actionData, bool hitterLooksLeft, UnitController attacker)

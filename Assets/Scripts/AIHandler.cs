@@ -10,7 +10,7 @@ namespace SA
         public UnitController unitController;
 
         public UnitController enemy;
-
+        public Phase myPhase;
         public float minDeadTime;
         public float maxDeadTime;
 
@@ -49,8 +49,21 @@ namespace SA
         private void Start()
         {
             unitController.isAI = true;
+            unitController.onDeath = UnRegisterMe;
+
+            if (myPhase != null)
+            {
+                myPhase.RegisterUnit(this);
+            }
         }
 
+        void UnRegisterMe()
+        {
+            if (myPhase != null)
+            {
+                myPhase.UnRegisterUnit(this);
+            }
+        }
 
         private void Update()
         {
