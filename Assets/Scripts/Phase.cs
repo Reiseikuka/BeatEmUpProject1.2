@@ -22,6 +22,8 @@ namespace SA
         {
             currentUnits.Remove(a);
 
+            Debug.Log("un");
+
             if (currentUnits.Count == 0)
             {
                 onPhaseEnded.Invoke();
