@@ -24,6 +24,13 @@ namespace SA
             maxHealth = unitcontroller.maxhealth;
         }
 
+        void FixedUpdate()
+        {
+            currentHealth = unitcontroller.health;
+            maxHealth = unitcontroller.maxhealth;
+        }
+        //Whenever Player gets hit or recovers health, it should be shown exactly when it happens
+
         //Setting the Slider Values
         void Update()
         {
