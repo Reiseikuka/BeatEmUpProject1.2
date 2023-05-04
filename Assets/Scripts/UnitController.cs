@@ -8,6 +8,8 @@ namespace SA
     public class UnitController : MonoBehaviour
     {
        public int health = 100;
+       public int maxhealth = 100;
+
        public int team;
        AnimatorHook animatorHook;
        public Transform holder;
