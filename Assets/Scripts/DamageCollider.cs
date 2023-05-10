@@ -7,9 +7,15 @@ namespace SA
     public class DamageCollider : MonoBehaviour
     {
         UnitController owner;
+        public bool IsAHit = false;
+        /*When hitting ememies, it should become true so HitCounter 
+        Script starts counting how many hits the player delivered to the enemies*/
+        
         private void Start()
         {
             owner = GetComponentInParent<UnitController>();
+
+            IsAHit = false;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -22,9 +28,10 @@ namespace SA
                     if (u.team != owner.team || owner.getLastAction.canHitAllies)
                     {
                         u.OnHit(owner.getLastAction, owner.isLookingLeft, owner);
+                        IsAHit = true;
                     }
                 }
-
+                
             }
         }
     }
