@@ -29,6 +29,7 @@ namespace SA
         private void FixedUpdate()
         {
             EnemyGotHit();
+            PlayerGetsHurt();
         }
 
         private void EnemyGotHit()
@@ -54,6 +55,16 @@ namespace SA
         private void HideHitCounter()
         {
             Countertext.enabled = false;
+        }
+
+        private void PlayerGetsHurt()
+        {
+            if (player.PlayerHurtdetector == true)
+            {
+                hitCount = 0;
+                HideHitCounter();
+                player.PlayerHurtdetector = false;
+            }
         }
 
     }

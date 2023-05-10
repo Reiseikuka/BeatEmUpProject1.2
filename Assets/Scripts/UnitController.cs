@@ -10,6 +10,7 @@ namespace SA
        public int health = 100;
        public int maxhealth = 100;
 
+       public bool PlayerHurtdetector = false;
        public int team;
        AnimatorHook animatorHook;
        public Transform holder;
@@ -21,7 +22,6 @@ namespace SA
         public bool hasBackHit;
         public bool isDead;
         public LayerMask walkLayer;
-        
 
         public delegate void OnDeath();
         public OnDeath onDeath;
@@ -235,31 +235,38 @@ namespace SA
                     if (isFromBehind)
                     {
                         PlayAnimation("hit_light_back");
+                        PlayerHurtdetector = true;
                     }else
                     {
-                        PlayAnimation("hit_light_front");             
+                        PlayAnimation("hit_light_front");
+                        PlayerHurtdetector = true;             
                     }
                     break;
                 case DamageType.mid:
                     if (isFromBehind)
                     {
                         PlayAnimation("hit_light_back");
+                        PlayerHurtdetector = true;
                     }else
                     {
-                        PlayAnimation("hit_light_front");             
+                        PlayAnimation("hit_light_front");   
+                        PlayerHurtdetector = true;          
                     }
                     break;
                 case DamageType.heavy:
                     if (isFromBehind)
                     {
                         PlayAnimation("knockdown_back");
+                        PlayerHurtdetector = true;
                     }else
                     {
-                        PlayAnimation("knockdown_front");             
+                        PlayAnimation("knockdown_front"); 
+                        PlayerHurtdetector = true;            
                     }
                     break;
                 case DamageType.bounce:
                     PlayAnimation("bounce", 0.1f); 
+                    PlayerHurtdetector = true;
                     break;
                 default:
                     break;
