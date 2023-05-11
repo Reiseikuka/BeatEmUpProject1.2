@@ -18,6 +18,12 @@ namespace SA
         private int hitCount = 0;
         //Counter for how many enemies the Player has done an attack
 
+        public int lasthit;
+        //The number of the last hit made by the Player to an Enemy, will be used for the Score
+
+        public ScoreSystem PlayerScore;
+        //Reference to the Player Score Script.
+
         private void Awake()
         {
             Countertext = GetComponent<Text>();
@@ -61,7 +67,16 @@ namespace SA
         {
             if (player.PlayerHurtdetector == true)
             {
+                lasthit = hitCount;
+                PlayerScore.finalhit = lasthit;
+                /*
+                The HitCounter Script will keep adding +1 each time the Player hits an enemy.
+                When the Player finally get hit or the HitCounter timer reaches 0, that number
+                will be stored in the lasthit variable from Score System, so we can multiply said number
+                accordingly and add it to the Score on the Score System script.  */
+
                 hitCount = 0;
+                lasthit = 0;
                 HideHitCounter();
                 player.PlayerHurtdetector = false;
             }
