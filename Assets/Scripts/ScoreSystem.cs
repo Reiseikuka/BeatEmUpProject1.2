@@ -27,7 +27,7 @@ namespace SA
         private int score;
           /*Used as a placeholder variable for*/
 
-        private int currentscore = 0;
+        private int currentscore;
         /*The variable that will be used for the Text containing the actual
           score of the player*/
 
@@ -37,17 +37,19 @@ namespace SA
         }
         void Start()
         {
+            currentscore = 0;
             ScoreText.text = currentscore.ToString();
         }
 
         // Update is called once per frame
         private void FixedUpdate()
         {
-            AddPoints();
+            Multiplier();
         }
 
-        public void AddPoints()
+        public void Multiplier()
         {
+
             if (finalhit < 10 && finalhit > 0)
             {
                 multiplier = finalhit * 2;
@@ -76,10 +78,17 @@ namespace SA
                 score = multiplier;
             }
             
-            currentscore = score;
+            AddPoints(score);
+
+        }
+
+        private void AddPoints(int number)
+        {
+            currentscore = currentscore + number;
 
             ScoreText.text = currentscore.ToString();
 
+            score = 0;
         }
     }
 }
