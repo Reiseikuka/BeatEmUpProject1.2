@@ -47,6 +47,7 @@
      <Compile Include="Assets\Tags\TWalkable.cs" />
      <Compile Include="Assets\Scripts\AIHandler.cs" />
      <Compile Include="Assets\Scripts\HandleAnimBooleans.cs" />
+     <Compile Include="Assets\Scripts\ScoreSystem.cs" />
      <Compile Include="Assets\Scripts\ActionDataHolder.cs" />
      <Compile Include="Assets\Tags\TBlockMovement.cs" />
      <Compile Include="Assets\Scripts\CameraManager.cs" />
@@ -54,7 +55,7 @@
      <Compile Include="Assets\HitCounter.cs" />
      <Compile Include="Assets\Scripts\InputHandler.cs" />
      <Compile Include="Assets\Scripts\LoadActionData.cs" />
-     <Compile Include="Assets\Scripts\ScoreSystem.cs" />
+     <Compile Include="Assets\PauseMenu.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

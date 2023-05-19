@@ -45,6 +45,7 @@ namespace SA
         private void FixedUpdate()
         {
             Multiplier();
+            finalhit = 0;
         }
 
         public void Multiplier()
