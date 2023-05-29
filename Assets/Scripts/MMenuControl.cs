@@ -26,6 +26,21 @@ namespace SA
         [SerializeField] private Toggle invertYToggle = null;
 
 
+
+        [Header("Graphics Settings")]
+        [SerializeField] private Slider brightnessSlider = null;
+        [SerializeField] private TMP_Text brightnessTextValue = null;
+        [SerializeField] private float defaultBrightness = 1;
+
+        private int _qualityLevel;
+        private bool _isFullScreen;
+        private float _brightnessLevel;
+
+        [Space(10)]
+        [SerializeField] private TMP_Dropdown qualityDropdown;
+        [SerializeField] private Toggle fullScreenToggle;
+        
+
         [Header("Confirmation")]
         [SerializeField] private GameObject confirmationPrompt = null;
 
@@ -38,6 +53,54 @@ namespace SA
         [SerializeField] private GameObject noSavedGameDialog = null;
 
 
+      [Header("Resolutions  Dropdowns")]
+      public  TMP_Dropdown resolutionDropdown;
+      private Resolution[] resolutions;
+
+      private void Start()
+      {
+        resolutions = Screen.resolutions;
+        resolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        int currentResolutionIndex = 0;
+
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if(resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+            {
+                currentResolutionIndex = i;
+            }
+        }
+        /*We need to get the index of any particular resolution
+            because we will have to specify by name; So we need to  search
+            through the length of our array to find how many
+            different resolutions that we have;
+            
+            In other words:  We are going to get all
+                the resolutions, we clear the options, create a list,
+                of options that we'll currently have, we search through the
+                length of the array,  we put the width and height into a string,
+                and we will check if the resolutions that we found is 
+                equal to our screen or height and then we'll set the 
+                current resolution we want to chose.*/
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+
+      }
+
+        public void SetResolution(int resolutionIndex)
+        {
+            Resolution resolution = resolutions[resolutionIndex];
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        }
+        /* Method that allow us to change the resolution*/
 
         public void NewGameDialogYes()
         {
@@ -101,8 +164,62 @@ namespace SA
             StartCoroutine(ConfirmationBox());
         }
 
+        public void SetBrightness(float brightness)
+        {
+            _brightnessLevel = brightness;
+            brightnessTextValue.text = brightness.ToString("0.0");
+        }
+
+        public void SetFullScreen(bool isFullScreen)
+        {
+            _isFullScreen = isFullScreen;
+        }
+
+        public void SetQuality(int qualityIndex)
+        {
+            _qualityLevel = qualityIndex;
+        }
+
+        public void GraphicsApply()
+        {
+            PlayerPrefs.SetFloat("masterBrightness", _brightnessLevel);
+            //Change your brightness with postprocessing
+
+            PlayerPrefs.SetInt("masterQuality", _qualityLevel);
+            QualitySettings.SetQualityLevel(_qualityLevel);
+            /*When we set our quality level  based on the settings;
+            When applied, it will change to the Quality of the Index
+            we just changed it */
+
+            PlayerPrefs.SetInt("masterFullscreen",  (_isFullScreen ? 1 : 0));
+            Screen.fullScreen = _isFullScreen;
+
+            StartCoroutine(ConfirmationBox());
+            /*When we apply the graphics, we are able to save what boolean it is,
+              set it and then save the quality and save the brightness .*/
+        }
+
         public void ResetButton(string MenuType)
         {
+
+            if (MenuType == "Graphics")
+            {
+                //Reset Brightness v alue
+                brightnessSlider.value = defaultBrightness;
+                brightnessTextValue.text = defaultBrightness.ToString("0.0");
+
+                qualityDropdown.value = 1;
+                QualitySettings.SetQualityLevel(1);
+
+                fullScreenToggle.isOn = false;
+                Screen.fullScreen = false;
+
+                Resolution currentResolution = Screen.currentResolution;
+                Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
+                resolutionDropdown.value = resolutions.Length;
+                GraphicsApply();
+            }
+
             if (MenuType == "Audio")
             {
                 AudioListener.volume = defaultVolume;
