@@ -1571,7 +1571,7 @@ MonoBehaviour:
   mainControllerSen: 4
   invertYToggle: {fileID: 84919926}
   brightnessSlider: {fileID: 959085912}
-  brightnessTextValue: {fileID: 1529760408}
+  brightnessTextValue: {fileID: 869491635}
   defaultBrightness: 1
   qualityDropdown: {fileID: 1459621082}
   fullScreenToggle: {fileID: 1736164674}
@@ -8656,7 +8656,7 @@ MonoBehaviour:
   menuController: {fileID: 225288997}
   volumeTextValue: {fileID: 1793035385}
   volumeSlider: {fileID: 1916368331}
-  brightnessTextValue: {fileID: 1529760408}
+  brightnessTextValue: {fileID: 869491635}
   brightnessSlider: {fileID: 959085912}
   qualityDropdown: {fileID: 1459621082}
   fullScreenToggle: {fileID: 1736164674}
