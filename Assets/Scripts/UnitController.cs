@@ -60,10 +60,21 @@ namespace SA
             }
         }
 
-        private void Start()
-        {
+        DebugTextHandler debugText;
+        public string debugState;
+
+		private void Start()
+		{
             animatorHook = GetComponentInChildren<AnimatorHook>();
-        }
+
+            if (isAI)
+            {
+                GameObject go = UIManager.singleton.CreateDebugTextObj();
+                debugText = go.GetComponentInChildren<DebugTextHandler>();
+                debugText.target = this.transform;
+                go.SetActive(true);
+            }
+		}
 
         public void TickPlayer(float delta, Vector3 direction)
         {
@@ -192,6 +203,7 @@ namespace SA
 
         public void SetIsDead()
         {
+            debugState = "<color=green>Dead</color>";
             animatorHook.SetIsDead();
             isDead = true;
             onDeath?.Invoke();
@@ -209,6 +221,8 @@ namespace SA
             {
                 isFromBehind = true;
             }
+
+            debugState = "<color=green>Hit</color>";
 
             DamageType damageType = actionData.damageType;
             health -= actionData.damage;
@@ -296,6 +310,22 @@ namespace SA
             actionsIndex = 0;
         }
 
+		private void LateUpdate()
+		{
+            if (debugText != null)
+            {
+                debugText.text.text = debugState;
+            }
+		}
+
+        public void VanishObject()
+        {
+            if (debugText != null)
+            {
+                Destroy(debugText.gameObject);
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
 

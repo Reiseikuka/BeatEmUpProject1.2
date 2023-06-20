@@ -84,6 +84,7 @@ namespace SA
 
             if (deadTime > 0)
             {
+                unitController.debugState = "Waiting"  + "\n" + deadTime.ToString();
                 deadTime -= delta;
                 return;
             }
@@ -118,13 +119,15 @@ namespace SA
 
             Vector3 targetDirection = Vector3.zero;
 
+
             if (!forceStop && !closeToEnemy_NoVertical && !isCloseToTargetPosition)
             {
                 
                 targetDirection = targetPosition - transform.position;
                 targetDirection.Normalize();
                 Debug.DrawLine(transform.position, targetDirection);
-
+                
+                unitController.debugState = "Moving to Target";
 
                 if (!closeToEnemy_General)
                 {
@@ -142,10 +145,15 @@ namespace SA
 
                 if (attackTime > 0)
                 {
+                    unitController.debugState = "Waiting to Attack" + "\n" + attackTime.ToString();
+
+
                     if (!forceStop)
                         attackTime -= delta;
                 }else
                 {
+                    unitController.debugState = "<color=red>Attacking</color>";
+
                     unitController.PlayAction(unitController.actionDataHolder.actions[0].actions[0]);
                     attackTime = attackRate;    
                     deadTime = getDeadTimeRate;                    
