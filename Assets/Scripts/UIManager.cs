@@ -24,7 +24,7 @@ namespace SA
 		public GameObject CreateDebugTextObj()
 		{
 			GameObject go = Instantiate(debugTextPrefab);
-			go.transform.parent = debugTextPrefab.transform.parent;
+			go.transform.SetParent(debugTextPrefab.transform.parent);
 			go.transform.localScale = Vector3.one;
 
 			return go;

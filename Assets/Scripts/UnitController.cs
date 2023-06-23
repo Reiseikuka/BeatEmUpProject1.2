@@ -131,7 +131,7 @@ namespace SA
                 }
             }
 
-            if (isValid)
+            if (isValid || isAI && !isInteracting)
             {
                 transform.position = targetPosition;
             }
