@@ -37,11 +37,15 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AnimatorHook.cs" />
+     <Compile Include="Assets\Scripts\AI\UseRootMotion.cs" />
+     <Compile Include="Assets\Scripts\AI\AILogic.cs" />
      <Compile Include="Assets\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\PhaseManager.cs" />
      <Compile Include="Assets\Scripts\UnitController.cs" />
      <Compile Include="Assets\Scripts\AIHandler.cs" />
      <Compile Include="Assets\Scripts\HandleAnimBooleans.cs" />
+     <Compile Include="Assets\Scripts\Pathfinder\GridManager.cs" />
+     <Compile Include="Assets\Scripts\Pathfinder\Pathfinder.cs" />
      <Compile Include="Assets\Scripts\ScoreSystem.cs" />
      <Compile Include="Assets\Scripts\ActionDataHolder.cs" />
      <Compile Include="Assets\Tags\TBlockMovement.cs" />
@@ -50,6 +54,7 @@
      <Compile Include="Assets\LoadPrefs.cs" />
      <Compile Include="Assets\HitCounter.cs" />
      <Compile Include="Assets\Scripts\InputHandler.cs" />
+     <Compile Include="Assets\Scripts\AI\AIGetRandomPosition.cs" />
      <Compile Include="Assets\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\LoadActionData.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
@@ -60,8 +65,8 @@
      <Compile Include="Assets\Scripts\Phase.cs" />
      <Compile Include="Assets\Tags\TWalkable.cs" />
      <Compile Include="Assets\Scripts\MMenuControl.cs" />
-     <Compile Include="Assets\Scripts\Pathfinder\Pathfinder.cs" />
-     <Compile Include="Assets\Scripts\Pathfinder\GridManager.cs" />
+     <Compile Include="Assets\Scripts\AI\AIWait.cs" />
+     <Compile Include="Assets\Scripts\AI\AIAttack.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

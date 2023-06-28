@@ -1041,6 +1041,7 @@ MonoBehaviour:
   rotationThreshold: 0.1
   forceStopDistance: 0.2
   forceStop: 0
+  currentLogic: {fileID: 11400000, guid: ddaf6d19e9786ed418fe9a8e544cc6df, type: 2}
 --- !u!4 &430255764
 Transform:
   m_ObjectHideFlags: 0

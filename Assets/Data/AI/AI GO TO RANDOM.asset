@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d05f3a3cfc3d348b92eb433aa5d3a0, type: 3}
+  m_Name: AI GO TO RANDOM
+  m_EditorClassIdentifier: 
+  exitState: {fileID: 11400000, guid: ba042f75ebc679c4eb9658417782e9e2, type: 2}
+  maxIterations: 3
+  exitLoopLogic: {fileID: 11400000, guid: 9c6731d98b530564a8db1ad5c1fe163c, type: 2}

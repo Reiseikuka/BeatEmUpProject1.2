@@ -12,7 +12,7 @@ namespace SA
 
        public bool PlayerHurtdetector = false;
        public int team;
-       AnimatorHook animatorHook;
+       public AnimatorHook animatorHook;
        public Transform holder;
 
         public float horizontalSpeed = .8f;

@@ -21,6 +21,13 @@ namespace SA
 				return v;
 			}
 		}
+
+		public void AssignState(AILogic exitState)
+		{
+			currentLogic = Instantiate(exitState);
+			currentLogic.Init(this);
+		}
+
 		float deadTime;
 
 		float attackTime = 1;
@@ -49,11 +56,7 @@ namespace SA
 				myPhase.RegisterUnit(this);
 			}
 
-			GetRandomPosition();
-			aITick = MoveToPosition;
-
-			List<Node> p = GridManager.singleton.GetPath(transform.position, enemy.position);
-
+			AssignState(currentLogic);
 		}
 
 		void UnRegisterMe()
@@ -64,29 +67,35 @@ namespace SA
 			}
 		}
 
-
-		public delegate void onAITick(float delta);
-		public onAITick aITick;
+		public AILogic currentLogic;
+		
 
 		private void Update()
 		{
-			if (enemy == null)
-				return;
-
 			float delta = Time.deltaTime;
 
-			aITick?.Invoke(delta);
+			if (isInteracting || unitController.isDead)
+			{
+				unitController.UseRootMotion(delta);
+			}
+
+			if (currentLogic == null || enemy == null)
+				return;
+
+			bool isDone = currentLogic.Tick(delta, this);
+
+			if (isDone)
+			{
+				currentLogic.Exit(this);
+			}
+
 
 			return;
 			
 			Vector3 myPosition = transform.position;
 			Vector3 enemyPosition = enemy.position;
 
-			if (isInteracting || unitController.isDead)
-			{
-				unitController.UseRootMotion(delta);
-				return;
-			}
+			
 
 			if (deadTime > 0)
 			{
@@ -170,6 +179,11 @@ namespace SA
 			unitController.TickPlayer(delta, targetDirection);
 		}
 
+		public void PlayActionFromHolder()
+		{ 
+			unitController.PlayAction(unitController.actionDataHolder.actions[0].actions[0]);
+		}
+
 		public bool IsCloseToTargetPosition(Vector3 p1, Vector3 p2)
 		{
 			float distance = Vector3.Distance(p1, p2);
@@ -195,10 +209,66 @@ namespace SA
 
 		}
 
-		void GetRandomPosition()
-		{
-			StartCoroutine(GetRandomPositionRoutine());
+		int randomPositionSteps;
 
+		public void GetRandomPosition()
+		{
+			bool isValidPosition = false;
+			Vector3 randomPosition = Random.insideUnitCircle;
+			Vector3 tp = enemy.position + randomPosition;
+
+			//GetValidPosition(tp)
+
+			Collider2D col = Physics2D.OverlapPoint(tp, unitController.walkLayer);
+
+			if (col != null)
+			{
+				TWalkable w = col.gameObject.transform.GetComponentInParent<TWalkable>();
+				if (w != null)
+				{
+					isValidPosition = true;
+				}
+
+				Debug.DrawRay(tp, Vector3.up * .2f, Color.green, 10);
+			}
+
+			if(!isValidPosition)
+			{
+				Debug.DrawRay(tp, Vector3.up * .2f, Color.yellow, 10);
+				col = Physics2D.OverlapCircle(tp, 5, unitController.walkLayer);
+
+				RaycastHit2D hit2D = Physics2D.Linecast(tp, col.transform.position,unitController.walkLayer);
+				if (hit2D.transform != null)
+				{
+					TWalkable w = col.gameObject.transform.GetComponentInParent<TWalkable>();
+					if (w != null)
+					{
+						isValidPosition = true;
+					}
+
+					tp = hit2D.point;
+				}
+			}
+
+			Node n = GridManager.singleton.GetNode(tp);
+			if (n.isWalkable)
+			{
+				currentPath = GridManager.singleton.GetPath(
+					transform.position, tp);
+
+				randomPositionSteps = 0;
+				hasMovePosition = true;
+			}
+			else
+			{
+				if (randomPositionSteps < 5)
+				{
+					GetRandomPosition();
+					randomPositionSteps++;
+				}
+			}
+
+			//StartCoroutine(GetRandomPositionRoutine());
 		}
 
 		IEnumerator GetRandomPositionRoutine()
@@ -207,7 +277,7 @@ namespace SA
 				enemy.position, 10,5);
 			int ran = Random.Range(0, flowmap.Count);
 
-			currentPath =  GridManager.singleton.GetPath(
+			currentPath = GridManager.singleton.GetPath(
 				transform.position, flowmap[ran].worldPosition);
 
 			foreach (var item in currentPath)
@@ -219,11 +289,12 @@ namespace SA
 			yield return null;
 		}
 
+
 		List<Node> currentPath;
 		Vector3 targetPosition;
 		bool hasMovePosition;
 
-		void MoveToPosition(float delta)
+		public bool MoveToPosition(float delta)
 		{
 			if (currentPath == null || currentPath.Count == 0)
 			{
@@ -232,29 +303,28 @@ namespace SA
 					unitController.TickPlayer(delta, Vector3.zero);
 					//TODO change logic
 					hasMovePosition = false;
-					Invoke("GetRandomPosition", 2);
+					//Invoke("GetRandomPosition", 2);
 				}
-
-				return;
+				return true;
 			}
 
-
 			targetPosition = currentPath[0].worldPosition;
-			
+
 			Vector3 p1 = targetPosition;
 			p1.z = transform.position.z;
 
 			Vector3 targetDirection = p1 - transform.position;
 			targetDirection.Normalize();
-			Debug.DrawLine(transform.position, targetPosition);
 
 			unitController.TickPlayer(delta, targetDirection);
-		
+
 			float disToTarget = Vector2.Distance(transform.position, currentPath[0].worldPosition);
-			if (disToTarget < 0.1f)
+			if (disToTarget < 0.03f)
 			{
 				currentPath.RemoveAt(0);
 			}
+
+			return false;
 		}
 
 		Vector3 GetValidPosition(Vector3 o)
