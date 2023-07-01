@@ -9,32 +9,43 @@ namespace SA
 		public int maxIterations = 3;
 		[System.NonSerialized]
 		int iterations;
-		AILogic _waitState;
 
-		public AILogic exitLoopLogic;
 		bool isWaiting;
+		float waitTime;
+		public float minWaitTime = .8f;
+		public float maxWaitTime = 1.5f;
+		public float rotateDis = 2f;
 
 		public override void Exit(AIHandler h)
 		{
-			h.AssignState(exitLoopLogic);
+			h.AssignState(exitState);
 		}
 
 		public override void Init(AIHandler h)
 		{
 			iterations = maxIterations;
 			h.GetRandomPosition();
-			_waitState = Instantiate(exitState);
-			_waitState.exitState = this;
-			Debug.Log("random");
+			waitTime = Random.Range(minWaitTime, maxWaitTime);
 		}
 
 		public override bool Tick(float delta, AIHandler h)
 		{
+			if (h.GetDistanceFromEnemy() <  .4f)
+			{
+				return true;
+			}
+
+			h.HandleAimingToEnemy(rotateDis);
+
 			if (isWaiting)
 			{
-				if (!_waitState.Tick(delta, h))
+				if (isWaiting)
 				{
-					return false;
+					waitTime -= delta;
+					if (waitTime > 0)
+					{
+						return true;
+					}
 				}
 
 				h.GetRandomPosition();
@@ -47,7 +58,7 @@ namespace SA
 			{
 				iterations--;
 				isWaiting = true;
-				_waitState.Init(h);
+				waitTime = Random.Range(minWaitTime, maxWaitTime);
 			}
 
 			if (iterations == 0)

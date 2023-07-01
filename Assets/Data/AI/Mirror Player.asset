@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0d05f3a3cfc3d348b92eb433aa5d3a0, type: 3}
-  m_Name: AI GO TO RANDOM
+  m_Script: {fileID: 11500000, guid: 80634a73c2ebe18478ebe8eac7e9e87c, type: 3}
+  m_Name: Mirror Player
   m_EditorClassIdentifier: 
   exitState: {fileID: 11400000, guid: 9c6731d98b530564a8db1ad5c1fe163c, type: 2}
-  maxIterations: 3
-  minWaitTime: 0.8
-  maxWaitTime: 1.5
-  rotateDis: 2
+  targetOffset: {x: 1, y: 1, z: 0}

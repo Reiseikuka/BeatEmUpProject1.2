@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\ActionDataHolder.cs" />
      <Compile Include="Assets\Tags\TBlockMovement.cs" />
      <Compile Include="Assets\Scripts\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\AI\AIAttack.cs" />
      <Compile Include="Assets\Scripts\DamageCollider.cs" />
      <Compile Include="Assets\LoadPrefs.cs" />
      <Compile Include="Assets\HitCounter.cs" />
@@ -66,7 +67,7 @@
      <Compile Include="Assets\Tags\TWalkable.cs" />
      <Compile Include="Assets\Scripts\MMenuControl.cs" />
      <Compile Include="Assets\Scripts\AI\AIWait.cs" />
-     <Compile Include="Assets\Scripts\AI\AIAttack.cs" />
+     <Compile Include="Assets\Scripts\AI\AIMirrorPlayer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

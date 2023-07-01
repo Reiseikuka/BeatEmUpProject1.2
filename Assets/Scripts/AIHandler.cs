@@ -15,6 +15,7 @@ namespace SA
 
 		public float minDeadTime;
 		public float maxDeadTime;
+
 		float getDeadTimeRate {
 			get {
 				float v = Random.Range(minDeadTime, maxDeadTime);
@@ -77,6 +78,7 @@ namespace SA
 			if (isInteracting || unitController.isDead)
 			{
 				unitController.UseRootMotion(delta);
+				return;
 			}
 
 			if (currentLogic == null || enemy == null)
@@ -209,56 +211,51 @@ namespace SA
 
 		}
 
+		public float GetDistance(Vector3 p1, Vector3 p2)
+		{
+			p1.z = 0;
+			p2.z = 0;
+
+			return Vector3.Distance(p1, p2);
+		}
+
+		public float GetDistanceFromEnemy()
+		{
+			return GetDistance(transform.position, enemy.position);
+		}
+		public void HandleAimingToEnemy(float rotateDistance)
+		{
+			float dis =  GetDistanceFromEnemy();
+
+			if (dis < rotateDistance)
+			{
+				Vector3 direction = enemy.position - transform.position;
+
+				unitController.HandleRotation(direction.x < 0);
+			}
+			else
+			{
+
+			}
+
+		}
+
 		int randomPositionSteps;
 
 		public void GetRandomPosition()
 		{
-			bool isValidPosition = false;
+
 			Vector3 randomPosition = Random.insideUnitCircle;
 			Vector3 tp = enemy.position + randomPosition;
 
-			//GetValidPosition(tp)
+			bool result = isValidPosition(ref tp);
 
-			Collider2D col = Physics2D.OverlapPoint(tp, unitController.walkLayer);
-
-			if (col != null)
+			if (result)
 			{
-				TWalkable w = col.gameObject.transform.GetComponentInParent<TWalkable>();
-				if (w != null)
-				{
-					isValidPosition = true;
-				}
-
-				Debug.DrawRay(tp, Vector3.up * .2f, Color.green, 10);
-			}
-
-			if(!isValidPosition)
-			{
-				Debug.DrawRay(tp, Vector3.up * .2f, Color.yellow, 10);
-				col = Physics2D.OverlapCircle(tp, 5, unitController.walkLayer);
-
-				RaycastHit2D hit2D = Physics2D.Linecast(tp, col.transform.position,unitController.walkLayer);
-				if (hit2D.transform != null)
-				{
-					TWalkable w = col.gameObject.transform.GetComponentInParent<TWalkable>();
-					if (w != null)
-					{
-						isValidPosition = true;
-					}
-
-					tp = hit2D.point;
-				}
-			}
-
-			Node n = GridManager.singleton.GetNode(tp);
-			if (n.isWalkable)
-			{
+				hasMovePosition = true;
 				currentPath = GridManager.singleton.GetPath(
 					transform.position, tp);
-
-				randomPositionSteps = 0;
-				hasMovePosition = true;
-			}
+			} 
 			else
 			{
 				if (randomPositionSteps < 5)
@@ -269,6 +266,75 @@ namespace SA
 			}
 
 			//StartCoroutine(GetRandomPositionRoutine());
+		}
+
+		public bool isValidPosition(ref Vector3 tp)
+		{
+			bool result = false;
+			
+			Collider2D col = Physics2D.OverlapPoint(tp, unitController.walkLayer);
+
+			if (col != null)
+			{
+				TWalkable w = col.gameObject.transform.GetComponentInParent<TWalkable>();
+				if (w != null)
+				{
+					result = true;
+				}
+
+			}
+
+			if(!result)
+			{
+				col = Physics2D.OverlapCircle(tp, 5, unitController.walkLayer);
+
+				RaycastHit2D hit2D = Physics2D.Linecast(tp, col.transform.position,unitController.walkLayer);
+				if (hit2D.transform != null)
+				{
+					TWalkable w = col.gameObject.transform.GetComponentInParent<TWalkable>();
+					if (w != null)
+					{
+						result = true;
+					}
+
+					tp = hit2D.point;
+				}
+			}
+
+			Node n = GridManager.singleton.GetNode(tp);
+			if (n.isWalkable)
+			{
+
+				result = true;
+			}
+
+			return result;
+		}
+
+		public bool GetPositionCloseToPlayer(Vector3 offset)
+		{
+			Vector3 dir = enemy.position - transform.position;
+			if (dir.x > 0)
+			{
+				offset.x = -offset.x;
+			}
+
+			Vector3 tp = enemy.position;
+			tp += offset;
+
+			bool isValid = isValidPosition(ref tp);
+
+			if (isValid)
+			{
+				currentPath = GridManager.singleton.GetPath(
+						transform.position, tp);
+
+				hasMovePosition = true;
+				return true;
+			}
+
+			return false;
+
 		}
 
 		IEnumerator GetRandomPositionRoutine()
