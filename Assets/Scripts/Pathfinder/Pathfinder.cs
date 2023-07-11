@@ -124,7 +124,6 @@ namespace SA
 
         }
 
-
         private List<Node> RetracePath(Node startNode, Node endNode)
         {
             List<Node> path = new List<Node>();
@@ -158,14 +157,14 @@ namespace SA
 			return GridManager.singleton.GetNode(x, y);
 		}
 
-		
+      
+
 	}
 
 	public class Node {
 		public int x;
 		public int y;
         public int step;
-        
 		public float hCost;
 		public float gCost;
 		public float fCost {

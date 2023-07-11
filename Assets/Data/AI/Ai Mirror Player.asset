@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80634a73c2ebe18478ebe8eac7e9e87c, type: 3}
-  m_Name: Mirror Player 1
+  m_Name: Ai Mirror Player
   m_EditorClassIdentifier: 
-  exitState: {fileID: 11400000, guid: 9c6731d98b530564a8db1ad5c1fe163c, type: 2}
-  targetOffset: {x: 0.3, y: -0.4, z: 0}
+  exitState: {fileID: 11400000, guid: ddaf6d19e9786ed418fe9a8e544cc6df, type: 2}
+  targetOffset: {x: 1, y: 1, z: 0}

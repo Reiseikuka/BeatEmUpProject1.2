@@ -7,13 +7,13 @@ namespace SA
 {
     public class UnitController : MonoBehaviour
     {
-       public int health = 100;
-       public int maxhealth = 100;
+        public int health = 100;
+        public int maxhealth = 100;
 
-       public bool PlayerHurtdetector = false;
-       public int team;
-       public AnimatorHook animatorHook;
-       public Transform holder;
+        public bool PlayerHurtdetector = false;
+        public int team;
+        public AnimatorHook animatorHook;
+        public Transform holder;
 
         public float horizontalSpeed = .8f;
         public float verticalSpeed = .65f;
@@ -26,18 +26,14 @@ namespace SA
         public delegate void OnDeath();
         public OnDeath onDeath;
 
-        public Vector3 position
-        {
-            get
-            {
+        public Vector3 position {
+            get {
                 return transform.position;
             }
         }
 
-        public bool canDoCombo
-        {
-            get
-            {
+        public bool canDoCombo {
+            get {
                 return animatorHook.canEnableCombo;
             }
         }
@@ -45,17 +41,14 @@ namespace SA
         public int actionsIndex;
         public ActionDataHolder actionDataHolder;
 
-        ActionData[] currentActionData{
-            get
-            {
+        ActionData[] currentActionData {
+            get {
                 return actionDataHolder.GetActions(actionsIndex);
             }
         }
 
-        public bool isInteracting
-        {
-            get
-            {
+        public bool isInteracting {
+            get {
                 return animatorHook.isInteracting;
             }
         }
@@ -76,38 +69,34 @@ namespace SA
             }
 		}
 
-        public void TickPlayer(float delta, Vector3 direction)
+		public void TickPlayer(float delta, Vector3 direction)
         {
-
-            direction.x *= horizontalSpeed * delta;
+            direction.x *= horizontalSpeed *delta;
             direction.y *= verticalSpeed * delta;
             bool isMoving = direction.sqrMagnitude > 0;
-
+           
             animatorHook.Tick(isMoving);
 
             Vector3 targetPosition = transform.position + direction;
             MoveOnPosition(targetPosition);
-
         }
 
         public void UseRootMotion(float delta)
         {
-            //agent.velocity = animatorHook.deltaPosition;
             Vector3 targetPosition = transform.position + animatorHook.deltaPosition * delta;
             MoveOnPosition(targetPosition);
         }
 
         void MoveOnPosition(Vector3 targetPosition)
         {
-
-            Collider2D[] colliders = Physics2D.OverlapPointAll(targetPosition, walkLayer);
+            Collider2D[] colliders = Physics2D.OverlapPointAll(targetPosition,walkLayer);
             bool isValid = false;
 
-            foreach (var item in colliders)
-            {
+			foreach (var item in colliders)
+			{
                 if (!isAI)
                 {
-                    TBlockMovement block= item.GetComponent<TBlockMovement>();
+                    TBlockMovement block = item.GetComponent<TBlockMovement>();
                     if (block != null)
                     {
                         isValid = false;
@@ -116,12 +105,12 @@ namespace SA
                 }
 
                 TWalkable w = item.GetComponent<TWalkable>();
-                if (w != null)
-                {
+                if (w != null) {
                     if (isAI)
                     {
                         isValid = true;
-                    }else
+                    }
+                    else
                     {
                         if (w.isPlayer)
                         {
@@ -129,10 +118,10 @@ namespace SA
                         }
                     }
                 }
-            }
-
+			}
+          
             if (isValid || isAI && !isInteracting)
-            {
+            { 
                 transform.position = targetPosition;
             }
         }
@@ -141,19 +130,17 @@ namespace SA
         {
             Vector3 eulers = Vector3.zero;
             isLookingLeft = false;
-            if(looksLeft)
+            if (looksLeft)
             {
                 eulers.y = 180;
                 isLookingLeft = true;
             }
             holder.localEulerAngles = eulers;
         }
-        ActionData storedAction;
 
-        public ActionData getLastAction
-        {
-            get
-            {
+        ActionData storedAction;
+        public ActionData getLastAction {
+            get {
                 return storedAction;
             }
         }
@@ -162,33 +149,33 @@ namespace SA
         {
             if (f.attack == false && f.jump == false)
                 return;
-                
-            foreach (var a in currentActionData)
-            {
+
+			foreach (var a in currentActionData)
+			{
                 if (a.isDeterministic)
                 {
-                    if (a.inputs.attack == f.attack 
-                    && a.inputs.down == f.down &&
-                    a.inputs.left == f.left &&
-                    a.inputs.right == f.right &&
-                    a.inputs.up ==    f.up &&
-                    a.inputs.jump == f.jump)
+                    if (a.inputs.attack == f.attack
+                        && a.inputs.down == f.down &&
+                        a.inputs.left == f.left &&
+                        a.inputs.right == f.right &&
+                        a.inputs.up == f.up &&
+                        a.inputs.jump == f.jump)
                     {
                         PlayAction(a);
                         break;
                     }
-                } else
-                {
-                    if (a.inputs.attack ==  f.attack 
+                }
+                else {
+
+                    if (a.inputs.attack == f.attack
                         || a.inputs.jump == f.jump)
                     {
                         PlayAction(a);
                         break;
                     }
                 }
-            }
+			}
         }
-
 
         public void PlayAction(ActionData actionData)
         {
@@ -209,28 +196,29 @@ namespace SA
             onDeath?.Invoke();
         }
 
+
         public void OnHit(ActionData actionData, bool hitterLooksLeft, UnitController attacker)
-        {   
+        {
             if (isDead)
                 return;
 
             bool isFromBehind = false;
 
-            if( isLookingLeft && hitterLooksLeft
+            if (isLookingLeft && hitterLooksLeft
                 || !hitterLooksLeft && !isLookingLeft)
             {
                 isFromBehind = true;
             }
 
-            debugState = "<color=green>Hit</color>";
+            debugState = "<color=green> Hit </color>";
 
             DamageType damageType = actionData.damageType;
             health -= actionData.damage;
-
             if (health <= 0)
             {
-                if (damageType != DamageType.bounce)
-                    damageType  = DamageType.heavy;
+                if(damageType != DamageType.bounce)
+                    damageType = DamageType.heavy;
+
                 SetIsDead();
             }
 
@@ -240,51 +228,48 @@ namespace SA
                 {
                     HandleRotation(!hitterLooksLeft);
                 }
-            }
+
                 isFromBehind = false;
-                
-            switch (damageType)
-            {
-                case DamageType.light:
+            }
+
+			switch (damageType)
+			{
+				case DamageType.light:
                     if (isFromBehind)
                     {
                         PlayAnimation("hit_light_back");
-                        PlayerHurtdetector = true;
-                    }else
+                    }
+                    else
+                    { 
+                        PlayAnimation("hit_light_front");
+                    }
+                    break;
+				case DamageType.mid:
+                    if (isFromBehind)
+                    {
+                        PlayAnimation("hit_light_back");
+                    }
+                    else
                     {
                         PlayAnimation("hit_light_front");
-                        PlayerHurtdetector = true;             
                     }
                     break;
-                case DamageType.mid:
-                    if (isFromBehind)
-                    {
-                        PlayAnimation("hit_light_back");
-                        PlayerHurtdetector = true;
-                    }else
-                    {
-                        PlayAnimation("hit_light_front");   
-                        PlayerHurtdetector = true;          
-                    }
-                    break;
-                case DamageType.heavy:
+				case DamageType.heavy:
                     if (isFromBehind)
                     {
                         PlayAnimation("knockdown_back");
-                        PlayerHurtdetector = true;
-                    }else
+                    }
+                    else
                     {
-                        PlayAnimation("knockdown_front"); 
-                        PlayerHurtdetector = true;            
+                        PlayAnimation("knockdown_front");
                     }
                     break;
                 case DamageType.bounce:
-                    PlayAnimation("bounce", 0.1f); 
-                    PlayerHurtdetector = true;
+                    PlayAnimation("bounce",0.1f);
                     break;
-                default:
-                    break;
-            }
+				default:
+					break;
+			}
 
             if (actionData.onHitOverrideMyAnimation)
             {
@@ -292,8 +277,7 @@ namespace SA
                     actionData.myOverrideAnimation,
                     actionData.crossfadeTime);
             }
-        }
-
+		}
 
         public void isCombo()
         {
@@ -326,7 +310,5 @@ namespace SA
                 Destroy(this.gameObject);
             }
         }
-    }
+	}
 }
-
-

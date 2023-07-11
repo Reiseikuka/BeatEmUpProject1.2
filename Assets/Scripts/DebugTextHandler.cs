@@ -10,7 +10,6 @@ namespace SA
 		public Text text;
 
 		RectTransform rectTrans;
-		
 		private void Start()
 		{
 			rectTrans = GetComponent<RectTransform>();

@@ -6,7 +6,7 @@ namespace SA
 {
     public class GridManager : MonoBehaviour
     {
-		public float scale = .1f;
+		public float scale = .5f;
 		public Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
 
 		public LayerMask walkLayer;
@@ -50,8 +50,6 @@ namespace SA
 			grid.TryGetValue(p, out Node retVal);
 			return retVal;
 		}
-        /*We are never going to iterate into the entire grid, we are 
-          going to be dynamically creating the nodes where we need themfor the AI to walk by*/
 
 		bool GetValidPosition(Vector3 o)
 		{
@@ -81,8 +79,8 @@ namespace SA
 		}
 
 		public List<Node> GetFlowmap(Vector3 o, int stepCount = 10, int offset = 1)
-        {
-            List<Node> result = new List<Node>();
+		{
+			List<Node> result = new List<Node>();
 
 			Node origin = GetNode(o);
 			List<Node> openSet = new List<Node>();
@@ -99,13 +97,13 @@ namespace SA
 
 				if (steps < stepCount)
 				{
-					foreach (var n in GetFlowmapNeighbours(currentNode, offset))
+					foreach (var n in GetFlowmapNeighbours(currentNode,offset))
 					{
 						if (!closedSet.Contains(n))
 						{
 							if (!openSet.Contains(n))
 							{
-								if(steps <= stepCount)
+								if (steps <= stepCount)
 								{
 									n.step = steps;
 									openSet.Add(n);
@@ -120,19 +118,19 @@ namespace SA
 				closedSet.Add(currentNode);
 			}
 
-            return result;
-        }
+			return result;
+		}
 
-		List<Node> GetFlowmapNeighbours(Node currentNode, int offset)
+		List<Node> GetFlowmapNeighbours(Node currentNode,int offset)
 		{
 			List<Node> result = new List<Node>();
 
-			for (int x = -1; x <= 1; x++)
+			for (int x = -1; x <=1; x++)
 			{
 				for (int y = -1; y <= 1; y++)
 				{
 					if (x == 0 && y == 0)
-					   continue;
+						continue;
 
 					int _x = currentNode.x + (x*offset);
 					int _y = currentNode.y + (y*offset);

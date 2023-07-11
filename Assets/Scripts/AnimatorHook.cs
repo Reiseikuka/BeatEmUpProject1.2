@@ -86,5 +86,10 @@ namespace SA
         {
             owner.VanishObject();
         }
+
+        public void ShakeCamera()
+        {
+            
+        }
     }
 }

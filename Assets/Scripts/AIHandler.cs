@@ -16,6 +16,7 @@ namespace SA
 		public float minDeadTime;
 		public float maxDeadTime;
 
+
 		float getDeadTimeRate {
 			get {
 				float v = Random.Range(minDeadTime, maxDeadTime);
@@ -223,28 +224,26 @@ namespace SA
 		{
 			return GetDistance(transform.position, enemy.position);
 		}
+
 		public void HandleAimingToEnemy(float rotateDistance)
 		{
-			float dis =  GetDistanceFromEnemy();
+			float dis = GetDistanceFromEnemy();
 
 			if (dis < rotateDistance)
 			{
 				Vector3 direction = enemy.position - transform.position;
 
 				unitController.HandleRotation(direction.x < 0);
-			}
-			else
+			} else
 			{
 
 			}
-
 		}
 
 		int randomPositionSteps;
 
 		public void GetRandomPosition()
 		{
-
 			Vector3 randomPosition = Random.insideUnitCircle;
 			Vector3 tp = enemy.position + randomPosition;
 
@@ -268,10 +267,12 @@ namespace SA
 			//StartCoroutine(GetRandomPositionRoutine());
 		}
 
+
 		public bool isValidPosition(ref Vector3 tp)
 		{
+
 			bool result = false;
-			
+
 			Collider2D col = Physics2D.OverlapPoint(tp, unitController.walkLayer);
 
 			if (col != null)
@@ -314,12 +315,14 @@ namespace SA
 		public bool GetPositionCloseToPlayer(Vector3 offset)
 		{
 			Vector3 dir = enemy.position - transform.position;
+
 			if (dir.x > 0)
 			{
 				offset.x = -offset.x;
 			}
 
 			Vector3 tp = enemy.position;
+
 			tp += offset;
 
 			bool isValid = isValidPosition(ref tp);
@@ -327,8 +330,8 @@ namespace SA
 			if (isValid)
 			{
 				currentPath = GridManager.singleton.GetPath(
-						transform.position, tp);
-
+					transform.position, tp);
+				
 				hasMovePosition = true;
 				return true;
 			}
@@ -336,6 +339,7 @@ namespace SA
 			return false;
 
 		}
+
 
 		IEnumerator GetRandomPositionRoutine()
 		{
@@ -454,5 +458,6 @@ namespace SA
 
 			return retVal;
 		}
+
 	}
 }

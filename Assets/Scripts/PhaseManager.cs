@@ -2,29 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace  SA
+namespace SA
 {
-    public class PhaseManager: MonoBehaviour
-    {
-        Phase currentPhase;
+	public class PhaseManager : MonoBehaviour
+	{
+		Phase currentPhase;
 
-        public Phase debugPhase;
-        public bool debugStart;
+		public Phase debugPhase;
+		public bool debugStart;
+		private void Update()
+		{
+			if (debugStart)
+			{
+				debugStart = false;
+				AssignPhase(debugPhase);
+			}
+		}
 
-        private void Update()
-        {
-            if (debugStart)
-            {
-                debugStart = false;
-                AssignPhase(debugPhase);
-            }
-        }
+		public void AssignPhase(Phase p)
+		{
+			currentPhase = p;
+			currentPhase.onPhaseStart.Invoke();
+		}
 
-        public void AssignPhase(Phase p)
-        {
-            currentPhase = p;
-            currentPhase.onPhaseStart.Invoke();
-        }
-    } 
+	}
 }
-

@@ -28,9 +28,11 @@ namespace SA
 			waitTime = Random.Range(minWaitTime, maxWaitTime);
 		}
 
+
 		public override bool Tick(float delta, AIHandler h)
 		{
-			if (h.GetDistanceFromEnemy() <  .4f)
+			
+			if (h.GetDistanceFromEnemy() < .4f)
 			{
 				return true;
 			}
@@ -39,13 +41,10 @@ namespace SA
 
 			if (isWaiting)
 			{
-				if (isWaiting)
+				waitTime -= delta;
+				if (waitTime > 0) 
 				{
-					waitTime -= delta;
-					if (waitTime > 0)
-					{
-						return true;
-					}
+					return false;
 				}
 
 				h.GetRandomPosition();
