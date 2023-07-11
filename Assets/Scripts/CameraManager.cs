@@ -15,7 +15,8 @@ namespace SA
 
         private void Update()
         {
-            Vector3 p = FindNearestPointOnLine(target.position, p1.position,p2.position);
+            //Vector3 p = GetClosestPointOnFiniteLine(target.position, p1.position,p2.position);            
+            Vector3 p = GetClosestPointOnFiniteLine(target.position, p1.position,p2.position);
             p.z = transform.position.z;
             transform.position = p;
 
@@ -56,6 +57,6 @@ namespace SA
             return origin + heading * dotP;
         }
     }
-    
+
 }
 
