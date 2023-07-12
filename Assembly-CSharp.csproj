@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\MMenuControl.cs" />
      <Compile Include="Assets\Scripts\AI\AIWait.cs" />
      <Compile Include="Assets\Scripts\AI\AIMirrorPlayer.cs" />
+     <Compile Include="Assets\Scripts\ShakeTransform.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
