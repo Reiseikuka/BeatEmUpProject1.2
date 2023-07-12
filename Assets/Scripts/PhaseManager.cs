@@ -25,5 +25,9 @@ namespace SA
 			currentPhase.onPhaseStart.Invoke();
 		}
 
+		public void CameraFollowStatus(bool status)
+		{
+			CameraManager.singleton.isFollowing = status;
+		}
 	}
 }
