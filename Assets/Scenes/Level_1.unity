@@ -3076,6 +3076,7 @@ MonoBehaviour:
   p1: {fileID: 1564690609}
   p2: {fileID: 2063533371}
   isFollowing: 1
+  shakeCamera: {fileID: 1096951633}
 --- !u!4 &2110095376
 Transform:
   m_ObjectHideFlags: 0

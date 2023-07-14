@@ -89,7 +89,7 @@ namespace SA
 
         public void ShakeCamera()
         {
-            
+            CameraManager.singleton.ShakeCamera();
         }
     }
 }

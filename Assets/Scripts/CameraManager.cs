@@ -14,6 +14,7 @@ namespace SA
         //Waypoint 2
 
         public bool isFollowing;
+        public SA.Utilities.ShakeTransform shakeCamera;
 
         public static CameraManager singleton;
 
@@ -40,6 +41,11 @@ namespace SA
             line_direction.Normalize();
             float project_length = Mathf.Clamp(Vector3.Dot(point - line_start, line_direction), 0f, line_length);
             return line_start + line_direction * project_length;
+        }
+
+        public void ShakeCamera()
+        {
+            shakeCamera.Shake();
         }
 
     }
