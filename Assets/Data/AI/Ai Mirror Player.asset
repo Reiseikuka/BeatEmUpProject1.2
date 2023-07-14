@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Ai Mirror Player
   m_EditorClassIdentifier: 
   exitState: {fileID: 11400000, guid: ddaf6d19e9786ed418fe9a8e544cc6df, type: 2}
-  targetOffset: {x: 1, y: 1, z: 0}
+  targetOffset: {x: 0.2, y: 1, z: 0}
