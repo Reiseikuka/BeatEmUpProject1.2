@@ -50,8 +50,8 @@ namespace SA.Utilities
                 isDone = true;
             }
 
-            float y = shakeCurve.Evaluate(shakeT);
-            Vector3 lp = startPosition; 
+            float y = shakeCurve.Evaluate(shakeT) * multiplier;
+            Vector3 lp = Vector3.zero;
             lp.y += y;
             transform.localPosition = lp;
 

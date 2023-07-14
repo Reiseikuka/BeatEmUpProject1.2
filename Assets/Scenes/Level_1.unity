@@ -1405,7 +1405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steps: 2
-  multiplier: 1
+  multiplier: 0.3
   shakeSpeed: 6
   shakeCurve:
     serializedVersion: 2
@@ -1413,20 +1413,47 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: -0.0050674463
+      outSlope: -0.0050674463
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.61512893
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      time: 0.50407624
+      value: 0.50014305
+      inSlope: -0.0035559754
+      outSlope: -0.0035559754
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.8492212
+    - serializedVersion: 3
+      time: 0.99890006
+      value: 0.0036329404
+      inSlope: 0.0064067612
+      outSlope: 0.0064067612
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.9533402
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.5141052
+      value: 0.49933
+      inSlope: -0.0019781005
+      outSlope: -0.0019781005
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.5644649
+    - serializedVersion: 3
+      time: 2.0075684
+      value: 0.0014686584
+      inSlope: -2.0197442
+      outSlope: -2.0197442
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.60487807
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
