@@ -42,6 +42,8 @@ namespace SA
 		public float forceStopDistance = .3f;
 		public bool forceStop;
 
+		public AIWaypoints waypoints;
+
 		public bool isInteracting {
 			get {
 				return unitController.isInteracting;

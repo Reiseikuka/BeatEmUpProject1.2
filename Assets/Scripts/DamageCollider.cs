@@ -25,6 +25,9 @@ namespace SA
             {
                 if (u != owner)
                 {
+                    if (owner.getLastAction == null)
+                        return;
+
                     if (u.team != owner.team || owner.getLastAction.canHitAllies)
                     {
                         u.OnHit(owner.getLastAction, owner.isLookingLeft, owner);

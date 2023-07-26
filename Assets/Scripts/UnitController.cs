@@ -201,6 +201,9 @@ namespace SA
         {
             if (isDead)
                 return;
+            
+            if (actionData == null)
+                return;
 
             bool isFromBehind = false;
 

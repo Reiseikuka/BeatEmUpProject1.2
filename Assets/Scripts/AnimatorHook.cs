@@ -23,7 +23,7 @@ namespace SA
             }
         }
 
-		private void Start()
+		private void Awake()
 		{
             anim = GetComponent<Animator>();
             owner = GetComponentInParent<UnitController>();
@@ -36,14 +36,9 @@ namespace SA
 
         public void PlayAnimation(string animName, float crossfadeTime = 0)
         {
-            if (crossfadeTime > 0.01f)
-            {
-                anim.CrossFadeInFixedTime(animName, crossfadeTime);
-            }
-            else
-            {
-                anim.Play(animName);
-            }
+
+            anim.CrossFadeInFixedTime(animName, crossfadeTime);
+
             anim.SetBool("isInteracting", true);
         }
 
