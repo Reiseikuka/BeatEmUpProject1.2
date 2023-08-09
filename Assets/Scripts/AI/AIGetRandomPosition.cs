@@ -32,38 +32,38 @@ namespace SA
 		public override bool Tick(float delta, AIHandler h)
 		{
 			
-			if (h.GetDistanceFromEnemy() < .4f)
-			{
-				return true;
-			}
+			//if (h.GetDistanceFromEnemy() < .4f)
+			//{
+			//	return true;
+			//}
 
-			h.HandleAimingToEnemy(rotateDis);
+			//h.HandleAimingToEnemy(rotateDis);
 
-			if (isWaiting)
-			{
-				waitTime -= delta;
-				if (waitTime > 0) 
-				{
-					return false;
-				}
+			//if (isWaiting)
+			//{
+			//	waitTime -= delta;
+			//	if (waitTime > 0) 
+			//	{
+			//		return false;
+			//	}
 
-				h.GetRandomPosition();
-				isWaiting = false;
-			}
+			//	h.GetRandomPosition();
+			//	isWaiting = false;
+			//}
 
-			bool isDone = h.MoveToPosition(delta);
+			//bool isDone = h.MoveToPosition(delta);
 
-			if (isDone)
-			{
-				iterations--;
-				isWaiting = true;
-				waitTime = Random.Range(minWaitTime, maxWaitTime);
-			}
+			//if (isDone)
+			//{
+			//	iterations--;
+			//	isWaiting = true;
+			//	waitTime = Random.Range(minWaitTime, maxWaitTime);
+			//}
 
-			if (iterations == 0)
-			{
-				return true;
-			}
+			//if (iterations == 0)
+			//{
+			//	return true;
+			//}
 
 			return false;
 		}

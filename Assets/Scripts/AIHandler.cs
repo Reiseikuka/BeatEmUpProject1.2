@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using PolyNav;
 
 namespace SA
 {
@@ -11,12 +12,11 @@ namespace SA
 
 		public UnitController enemy;
 
+		public PolyNavAgent agent;
 		public Phase myPhase;
 
 		public float minDeadTime;
 		public float maxDeadTime;
-
-
 		float getDeadTimeRate {
 			get {
 				float v = Random.Range(minDeadTime, maxDeadTime);
@@ -54,6 +54,8 @@ namespace SA
 		{
 			unitController.isAI = true;
 			unitController.onDeath = UnRegisterMe;
+			agent = GetComponent<PolyNavAgent>();
+			agent.map = LevelManager.singleton.navmesh;
 
 			if (myPhase != null)
 			{
@@ -80,108 +82,24 @@ namespace SA
 
 			if (isInteracting || unitController.isDead)
 			{
+				agent.Stop();
 				unitController.UseRootMotion(delta);
 				return;
 			}
 
-			if (currentLogic == null || enemy == null)
-				return;
-
-			bool isDone = currentLogic.Tick(delta, this);
-
-			if (isDone)
+			if (currentLogic != null)
 			{
-				currentLogic.Exit(this);
-			}
+				bool isDone = currentLogic.Tick(delta, this);
 
-
-			return;
-			
-			Vector3 myPosition = transform.position;
-			Vector3 enemyPosition = enemy.position;
-
-			
-
-			if (deadTime > 0)
-			{
-				unitController.debugState = "Waiting" + "\n" + deadTime.ToString("0.00"); ;
-				deadTime -= delta;
-				return;
-			}
-
-			Vector3 directionToTarget = enemyPosition - myPosition;
-			directionToTarget.Normalize();
-			directionToTarget.z = 0;
-
-			Vector3 targetPosition = enemyPosition + (directionToTarget * -1) * attackDistance;
-
-			bool isCloseToTargetPosition = IsCloseToTargetPosition(myPosition, targetPosition);
-			bool closeToEnemy_NoVertical = isCloseToEnemy_NoVertical(myPosition, enemyPosition);
-			bool closeToEnemy_General = isCloseToEnemy_General(myPosition, enemyPosition);
-
-			Collider[] colliders = Physics.OverlapSphere(transform.position, forceStopDistance);
-			forceStop = false;
-
-			foreach (var item in colliders)
-			{
-				AIHandler a = item.transform.GetComponentInParent<AIHandler>();
-				if (a != null)
+				if (isDone)
 				{
-					if (a != this)
-					{
-						if (!a.forceStop)
-						{
-							forceStop = true;
-						}
-					}
+					currentLogic.Exit(this);
 				}
 			}
 
-			Vector3 targetDirection = Vector3.zero;
-
-
-			if (!forceStop && !closeToEnemy_NoVertical && !isCloseToTargetPosition)
-			{
-				targetDirection = targetPosition - transform.position;
-				targetDirection.Normalize();
-				Debug.DrawLine(transform.position, targetPosition);
-
-				unitController.debugState = "Moving to target";
-
-				if (!closeToEnemy_General)
-				{
-					unitController.HandleRotation(targetDirection.x < 0);
-				}
-				else
-				{
-					unitController.HandleRotation(directionToTarget.x < 0);
-				}
-
-			}
-			else
-			{
-
-				unitController.HandleRotation(directionToTarget.x < 0);
-
-				if (attackTime > 0)
-				{
-					unitController.debugState = "Waiting to Attack" + "\n" + attackTime.ToString("0.00");
-
-					if (!forceStop)
-						attackTime -= delta;
-				}
-				else
-				{
-					unitController.debugState = "<color=red>Attacking</color>";
-
-
-					unitController.PlayAction(unitController.actionDataHolder.actions[0].actions[0]);
-					attackTime = attackRate;
-					deadTime = getDeadTimeRate;
-				}
-			}
-
-			unitController.TickPlayer(delta, targetDirection);
+			Vector3 targetToEnemy = enemy.transform.position - unitController.transform.position;
+			unitController.HandleRotation(targetToEnemy.x < 0);
+			unitController.animatorHook.Tick(agent.remainingDistance > 0.01f);
 		}
 
 		public void PlayActionFromHolder()
@@ -189,37 +107,28 @@ namespace SA
 			unitController.PlayAction(unitController.actionDataHolder.actions[0].actions[0]);
 		}
 
-		public bool IsCloseToTargetPosition(Vector3 p1, Vector3 p2)
+		public float GetDistance(Vector3 p1, Vector3 p2, bool isY)
 		{
-			float distance = Vector3.Distance(p1, p2);
-			return distance < stopDistance;
-		}
-
-		public bool isCloseToEnemy_NoVertical(Vector3 p1, Vector3 p2)
-		{
-			float dif = p1.z - p2.z;
-			if (Mathf.Abs(dif) < verticalThreshold)
+			if (isY)
 			{
-				return Vector3.Distance(p1, p2) < attackDistance;
+				p1.x = 0;
+				p2.x = 0;
+
+				return Vector2.Distance(p1, p2);
 			}
 			else
 			{
-				return false;
+				p1.y = 0;
+				p2.y = 0;
+
+				return Vector2.Distance(p1, p2);
 			}
-		}
-
-		public bool isCloseToEnemy_General(Vector3 p1, Vector3 p2)
-		{ 
-				return Vector3.Distance(p1, p2) < rotateDistance;
-
 		}
 
 		public float GetDistance(Vector3 p1, Vector3 p2)
 		{
-			p1.z = 0;
-			p2.z = 0;
-
-			return Vector3.Distance(p1, p2);
+		
+			return Vector2.Distance(p1, p2);
 		}
 
 		public float GetDistanceFromEnemy()
@@ -236,43 +145,43 @@ namespace SA
 				Vector3 direction = enemy.position - transform.position;
 
 				unitController.HandleRotation(direction.x < 0);
-			} else
-			{
-
 			}
+			else 
+			{ 
+				//unitController.HandleRotation(unitController.
+			}
+
 		}
 
 		int randomPositionSteps;
 
 		public void GetRandomPosition()
 		{
-			Vector3 randomPosition = Random.insideUnitCircle;
-			Vector3 tp = enemy.position + randomPosition;
+			//Vector3 randomPosition = Random.insideUnitCircle;
+			//Vector3 tp = enemy.position + randomPosition;
 
-			bool result = isValidPosition(ref tp);
+			//bool result = isValidPosition(ref tp);
 
-			if (result)
-			{
-				hasMovePosition = true;
-				currentPath = GridManager.singleton.GetPath(
-					transform.position, tp);
-			} 
-			else
-			{
-				if (randomPositionSteps < 5)
-				{
-					GetRandomPosition();
-					randomPositionSteps++;
-				}
-			}
+			//if (result)
+			//{
+			//	hasMovePosition = true;
+			//	currentPath = GridManager.singleton.GetPath(
+			//		transform.position, tp);
+			//}
+			//else
+			//{
+			//	if (randomPositionSteps < 5)
+			//	{
+			//		GetRandomPosition();
+			//		randomPositionSteps++;
+			//	}
+			//}
 
 			//StartCoroutine(GetRandomPositionRoutine());
 		}
 
-
 		public bool isValidPosition(ref Vector3 tp)
 		{
-
 			bool result = false;
 
 			Collider2D col = Physics2D.OverlapPoint(tp, unitController.walkLayer);
@@ -287,11 +196,11 @@ namespace SA
 
 			}
 
-			if(!result)
+			if (!result)
 			{
 				col = Physics2D.OverlapCircle(tp, 5, unitController.walkLayer);
 
-				RaycastHit2D hit2D = Physics2D.Linecast(tp, col.transform.position,unitController.walkLayer);
+				RaycastHit2D hit2D = Physics2D.Linecast(tp, col.transform.position, unitController.walkLayer);
 				if (hit2D.transform != null)
 				{
 					TWalkable w = col.gameObject.transform.GetComponentInParent<TWalkable>();
@@ -307,96 +216,51 @@ namespace SA
 			Node n = GridManager.singleton.GetNode(tp);
 			if (n.isWalkable)
 			{
+				
 
 				result = true;
 			}
-
+			
 			return result;
 		}
 
-		public bool GetPositionCloseToPlayer(Vector3 offset)
+		public Vector3 GetPositionCloseToPlayer(Vector3 offset)
 		{
 			Vector3 dir = enemy.position - transform.position;
-
 			if (dir.x > 0)
 			{
 				offset.x = -offset.x;
 			}
 
 			Vector3 tp = enemy.position;
-
 			tp += offset;
 
-			bool isValid = isValidPosition(ref tp);
-
-			if (isValid)
-			{
-				currentPath = GridManager.singleton.GetPath(
-					transform.position, tp);
-				
-				hasMovePosition = true;
-				return true;
-			}
-
-			return false;
-
+			return tp;
 		}
-
 
 		IEnumerator GetRandomPositionRoutine()
 		{
-			List<Node> flowmap = GridManager.singleton.GetFlowmap(
-				enemy.position, 10,5);
-			int ran = Random.Range(0, flowmap.Count);
+			//List<Node> flowmap = GridManager.singleton.GetFlowmap(
+			//	enemy.position, 10,5);
+			//int ran = Random.Range(0, flowmap.Count);
 
-			currentPath = GridManager.singleton.GetPath(
-				transform.position, flowmap[ran].worldPosition);
+			//currentPath = GridManager.singleton.GetPath(
+			//	transform.position, flowmap[ran].worldPosition);
 
-			foreach (var item in currentPath)
-			{
-				Debug.DrawRay(item.worldPosition, Vector3.up * .1f, Color.red, 5);
-			}
+			//foreach (var item in currentPath)
+			//{
+			//	Debug.DrawRay(item.worldPosition, Vector3.up * .1f, Color.red, 5);
+			//}
 
-			hasMovePosition = true;
+			//hasMovePosition = true;
 			yield return null;
 		}
 
 
-		List<Node> currentPath;
-		Vector3 targetPosition;
-		bool hasMovePosition;
 
-		public bool MoveToPosition(float delta)
+		public void MoveToPosition(Vector3 targetPosition, System.Action<bool> callback)
 		{
-			if (currentPath == null || currentPath.Count == 0)
-			{
-				if (hasMovePosition)
-				{
-					unitController.TickPlayer(delta, Vector3.zero);
-					//TODO change logic
-					hasMovePosition = false;
-					//Invoke("GetRandomPosition", 2);
-				}
-				return true;
-			}
-
-			targetPosition = currentPath[0].worldPosition;
-
-			Vector3 p1 = targetPosition;
-			p1.z = transform.position.z;
-
-			Vector3 targetDirection = p1 - transform.position;
-			targetDirection.Normalize();
-
-			unitController.TickPlayer(delta, targetDirection);
-
-			float disToTarget = Vector2.Distance(transform.position, currentPath[0].worldPosition);
-			if (disToTarget < 0.03f)
-			{
-				currentPath.RemoveAt(0);
-			}
-
-			return false;
+			agent.SetDestination(targetPosition, callback);
 		}
 
 		Vector3 GetValidPosition(Vector3 o)
@@ -460,6 +324,5 @@ namespace SA
 
 			return retVal;
 		}
-
 	}
 }

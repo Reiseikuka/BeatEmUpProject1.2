@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{487051dc-cf93-2b3b-837d-34a3efb3224d}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyNav", "PolyNav.csproj", "{114d944f-ca65-6a5a-7c07-2f290fafcfe2}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.PlayerPrefsEditor.Samples.SampleScene", "Unity.PlayerPrefsEditor.Samples.SampleScene.csproj", "{7ccaee7c-57f1-d0dd-ef15-d3dae30f2370}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.PlayerPrefsEditor.Editor", "Unity.PlayerPrefsEditor.Editor.csproj", "{3aaf3567-f4a2-0e75-184f-e4275dace456}"
@@ -16,6 +18,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{487051dc-cf93-2b3b-837d-34a3efb3224d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{487051dc-cf93-2b3b-837d-34a3efb3224d}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114d944f-ca65-6a5a-7c07-2f290fafcfe2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114d944f-ca65-6a5a-7c07-2f290fafcfe2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ccaee7c-57f1-d0dd-ef15-d3dae30f2370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7ccaee7c-57f1-d0dd-ef15-d3dae30f2370}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3aaf3567-f4a2-0e75-184f-e4275dace456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

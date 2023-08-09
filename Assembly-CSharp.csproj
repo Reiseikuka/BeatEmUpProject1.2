@@ -40,37 +40,41 @@
      <Compile Include="Assets\Scripts\AI\UseRootMotion.cs" />
      <Compile Include="Assets\Scripts\AI\AILogic.cs" />
      <Compile Include="Assets\PlayerHealth.cs" />
-     <Compile Include="Assets\Scripts\PhaseManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\PhaseManager.cs" />
      <Compile Include="Assets\Scripts\UnitController.cs" />
      <Compile Include="Assets\Scripts\AIHandler.cs" />
      <Compile Include="Assets\Scripts\HandleAnimBooleans.cs" />
      <Compile Include="Assets\Scripts\Pathfinder\GridManager.cs" />
      <Compile Include="Assets\Scripts\Pathfinder\Pathfinder.cs" />
      <Compile Include="Assets\Scripts\ScoreSystem.cs" />
-     <Compile Include="Assets\Scripts\ActionDataHolder.cs" />
+     <Compile Include="Assets\Scripts\Managers\ActionDataHolder.cs" />
      <Compile Include="Assets\Tags\TBlockMovement.cs" />
-     <Compile Include="Assets\Scripts\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\CameraManager.cs" />
      <Compile Include="Assets\Scripts\AI\AIAttack.cs" />
      <Compile Include="Assets\Scripts\DamageCollider.cs" />
      <Compile Include="Assets\LoadPrefs.cs" />
      <Compile Include="Assets\HitCounter.cs" />
-     <Compile Include="Assets\Scripts\InputHandler.cs" />
+     <Compile Include="Assets\Scripts\Managers\InputHandler.cs" />
      <Compile Include="Assets\Scripts\AI\AIGetRandomPosition.cs" />
      <Compile Include="Assets\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\LoadActionData.cs" />
-     <Compile Include="Assets\Scripts\UIManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
      <Compile Include="Assets\Scripts\DebugTextHandler.cs" />
      <Compile Include="Assets\Scripts\ActionData.cs" />
+     <Compile Include="Assets\Scripts\AI\AIWaypoints.cs" />
      <Compile Include="Assets\Scripts\DynamicSortOrder.cs" />
-     <Compile Include="Assets\Scripts\OnTriggerEvent.cs" />
-     <Compile Include="Assets\Scripts\Phase.cs" />
+     <Compile Include="Assets\Scripts\Managers\OnTriggerEvent.cs" />
+     <Compile Include="Assets\Scripts\Managers\Phase.cs" />
      <Compile Include="Assets\Tags\TWalkable.cs" />
      <Compile Include="Assets\Scripts\ShakeTransform.cs" />
+     <Compile Include="Assets\Scripts\AI\MovingThug.cs" />
      <Compile Include="Assets\Scripts\MMenuControl.cs" />
      <Compile Include="Assets\Scripts\AI\AIWait.cs" />
-     <Compile Include="Assets\Scripts\AI\AIMirrorPlayer.cs" />
-     <Compile Include="Assets\Scripts\AI\AIWaypoints.cs" />
-     <Compile Include="Assets\Scripts\AI\MovingThug.cs" />
+     <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
+     <Compile Include="Assets\Scripts\AI\AISublogicContainer.cs" />
+     <Compile Include="Assets\Scripts\AI\AISubLogic.cs" />
+     <Compile Include="Assets\Scripts\AI\AISubAttackWhenClose.cs" />
+     <Compile Include="Assets\Scripts\AI\AISubGetToTargetPosition.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -788,6 +792,10 @@
     <ProjectReference Include="Unity.PlayerPrefsEditor.Samples.SampleScene.csproj">
       <Project>{7ccaee7c-57f1-d0dd-ef15-d3dae30f2370}</Project>
       <Name>Unity.PlayerPrefsEditor.Samples.SampleScene</Name>
+    </ProjectReference>
+    <ProjectReference Include="PolyNav.csproj">
+      <Project>{114d944f-ca65-6a5a-7c07-2f290fafcfe2}</Project>
+      <Name>PolyNav</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.PlayerPrefsEditor.EditorResources.csproj">
       <Project>{1aad9bbb-07d9-7316-2a98-dd76a5ddacf2}</Project>

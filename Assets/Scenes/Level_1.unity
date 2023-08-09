@@ -395,7 +395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &232374041
 Transform:
   m_ObjectHideFlags: 0
@@ -476,6 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitController: {fileID: 232374043}
   enemy: {fileID: 1590689340}
+  agent: {fileID: 0}
   myPhase: {fileID: 868032554}
   minDeadTime: 0.5
   maxDeadTime: 1
@@ -777,6 +778,7 @@ GameObject:
   - component: {fileID: 430255763}
   - component: {fileID: 430255762}
   - component: {fileID: 430255760}
+  - component: {fileID: 430255761}
   m_Layer: 0
   m_Name: Unit Controller - Enemy
   m_TagString: Untagged
@@ -805,6 +807,34 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &430255761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430255759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cc6a4987f7c684798156c56d545838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _map: {fileID: 0}
+  maxSpeed: 2.5
+  maxForce: 10
+  stoppingDistance: 0.01
+  slowingDistance: 1
+  lookAheadDistance: 1
+  avoidRadius: 0
+  avoidanceConsiderStuckedTime: 3
+  avoidanceConsiderReachedDistance: 1
+  rotateTransform: 0
+  rotateSpeed: 350
+  centerOffset: {x: 0, y: 0}
+  repath: 1
+  restrict: 0
+  closerPointOnInvalid: 1
+  debugPath: 1
 --- !u!114 &430255762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,6 +879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitController: {fileID: 430255762}
   enemy: {fileID: 1590689340}
+  agent: {fileID: 0}
   myPhase: {fileID: 868032554}
   minDeadTime: 0.5
   maxDeadTime: 1
@@ -861,7 +892,7 @@ MonoBehaviour:
   forceStopDistance: 0.3
   forceStop: 0
   waypoints: {fileID: 0}
-  currentLogic: {fileID: 11400000, guid: ddaf6d19e9786ed418fe9a8e544cc6df, type: 2}
+  currentLogic: {fileID: 11400000, guid: 55f8033f533951f408ee1b28eedbd585, type: 2}
 --- !u!4 &430255764
 Transform:
   m_ObjectHideFlags: 0
@@ -870,12 +901,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430255759}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.2, y: 0.7316738, z: -0.23631096}
+  m_LocalPosition: {x: -13.14, y: -0.6834197, z: 0.71980286}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 912910893}
-  m_Father: {fileID: 1217151801}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &433681865
 GameObject:
@@ -907,7 +938,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1217151801}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &433681867
 BoxCollider2D:
@@ -1435,6 +1466,7 @@ GameObject:
   - component: {fileID: 753144780}
   - component: {fileID: 753144779}
   - component: {fileID: 753144781}
+  - component: {fileID: 753144782}
   m_Layer: 7
   m_Name: Walkable Area
   m_TagString: Untagged
@@ -1498,6 +1530,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
+--- !u!114 &753144782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753144778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f01b895e078212419b3a7c52085d19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shapeType: 0
+  obstaclesMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  autoRegenerateInterval: 60
+  radiusOffset: 0.1
+  invertMasterPolygon: 0
 --- !u!850595691 &759120547
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2849,7 +2900,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 430255764}
   - {fileID: 1641453848}
   - {fileID: 433681866}
   - {fileID: 1774328062}
@@ -2977,8 +3027,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1363317671}
+  - component: {fileID: 1363317672}
   m_Layer: 0
-  m_Name: Levels
+  m_Name: LEVEL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3009,6 +3060,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1363317672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363317670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353849f3e1252934680278e3a1d29856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navmesh: {fileID: 753144782}
 --- !u!1 &1389346907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3606,7 +3670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590689337}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.71637344, y: -0.50288194, z: 0.9302211}
+  m_LocalPosition: {x: -12.02, y: -0.50288194, z: 0.9302211}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 392582262}
@@ -3643,7 +3707,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1217151801}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1641453849
 BoxCollider2D:
@@ -3890,7 +3954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1686631785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4214,7 +4278,7 @@ Transform:
   m_Children:
   - {fileID: 1154092998}
   m_Father: {fileID: 1217151801}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1774328063
 Rigidbody2D:
@@ -4281,6 +4345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitController: {fileID: 1774328064}
   enemy: {fileID: 1590689340}
+  agent: {fileID: 0}
   myPhase: {fileID: 868032554}
   minDeadTime: 0.5
   maxDeadTime: 1
@@ -4293,7 +4358,7 @@ MonoBehaviour:
   forceStopDistance: 0.3
   forceStop: 0
   waypoints: {fileID: 0}
-  currentLogic: {fileID: 11400000, guid: 109477db36422f04b865c54911052937, type: 2}
+  currentLogic: {fileID: 0}
 --- !u!1 &1792508000
 GameObject:
   m_ObjectHideFlags: 0
@@ -4620,7 +4685,7 @@ MonoBehaviour:
   target: {fileID: 1590689342}
   p1: {fileID: 1564690609}
   p2: {fileID: 2063533371}
-  isFollowing: 0
+  isFollowing: 1
   shakeCamera: {fileID: 1096951633}
 --- !u!4 &2110095376
 Transform:
