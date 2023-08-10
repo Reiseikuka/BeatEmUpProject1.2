@@ -8,9 +8,6 @@ namespace SA
     public class UnitController : MonoBehaviour
     {
         public int health = 100;
-        public int maxhealth = 100;
-
-        public bool PlayerHurtdetector = false;
         public int team;
         public AnimatorHook animatorHook;
         public Transform holder;
@@ -25,6 +22,8 @@ namespace SA
 
         public delegate void OnDeath();
         public OnDeath onDeath;
+
+        public GameObject hitParticle;
 
         public Vector3 position {
             get {
@@ -196,14 +195,27 @@ namespace SA
             onDeath?.Invoke();
         }
 
+        
 
         public void OnHit(ActionData actionData, bool hitterLooksLeft, UnitController attacker)
         {
             if (isDead)
                 return;
-            
+
             if (actionData == null)
                 return;
+
+            if (attacker.hitParticle != null)
+            {
+                GameObject go = Instantiate(attacker.hitParticle);
+                go.transform.position = transform.position;
+                if (!isLookingLeft)
+                {
+                    go.transform.eulerAngles = new Vector3(0, 0, 0);
+                }
+
+                go.SetActive(true);
+            }
 
             bool isFromBehind = false;
 
@@ -312,6 +324,29 @@ namespace SA
                 Destroy(debugText.gameObject);
                 Destroy(this.gameObject);
             }
+        }
+
+        public void SpawnObject(string id)
+        {
+            //TODO implement an object puller
+            GameObject prefab = Resources.Load(id) as GameObject;
+            GameObject go = Instantiate(prefab);
+            go.transform.position = transform.position;
+            go.transform.rotation = holder.rotation;
+
+            DamageCollider dc = go.GetComponentInChildren<DamageCollider>();
+            if (dc != null)
+            {
+                dc.AssignOwner(this);
+
+                Projectile p = go.GetComponentInChildren<Projectile>();
+                if (p != null)
+                {
+                    storedAction = p.action;
+                }
+
+            }
+
         }
 	}
 }

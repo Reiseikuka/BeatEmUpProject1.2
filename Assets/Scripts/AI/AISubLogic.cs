@@ -6,6 +6,8 @@ namespace SA
 {
     public abstract class AISubLogic : ScriptableObject
     {
+        public bool instanceSublogic;
+
         public abstract void Tick(float delta, AIHandler h);
     }
 }

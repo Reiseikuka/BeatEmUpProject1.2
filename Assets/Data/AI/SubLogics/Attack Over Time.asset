@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74185e7707ba93e42929e0c39e85f1e0, type: 3}
-  m_Name: Stay On The Edge
+  m_Script: {fileID: 11500000, guid: c67877b53ef3edf46be57c7448ca6917, type: 3}
+  m_Name: Attack Over Time
   m_EditorClassIdentifier: 
-  instanceSublogic: 0
-  targetOffset: {x: 1, y: 0, z: 0}
-  fromPlayer: 1
+  instanceSublogic: 1
+  attackRate: 2
+  targetAnimation: throw

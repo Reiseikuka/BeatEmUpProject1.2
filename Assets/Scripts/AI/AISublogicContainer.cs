@@ -15,6 +15,14 @@ namespace SA
 
 		public override void Init(AIHandler h)
 		{
+			for (int i = 0; i < sublogics.Length; i++)
+			{
+				if (sublogics[i].instanceSublogic)
+				{
+					sublogics[i] = Instantiate(sublogics[i]);
+				}
+			}
+
 		}
 
 		public override bool Tick(float delta, AIHandler h)
@@ -30,5 +38,3 @@ namespace SA
 		
 	}
 }
-
-/*We will use this Script to create unique AI Logics without the need to use SubLogics*/

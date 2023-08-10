@@ -8,6 +8,7 @@ namespace SA
 	{
 		public SpriteRenderer spriteRenderer;
 		public Transform origin;
+		public float yOffset;
 
 		private void Update()
 		{
@@ -17,7 +18,10 @@ namespace SA
 				position = origin.position;
 			}
 
-			int sortOrder = Mathf.RoundToInt(position.y * 100) + 10;
+			float y = position.y;
+			y += yOffset;
+
+			int sortOrder = Mathf.RoundToInt(y * 100) + 10;
 			spriteRenderer.sortingOrder = -sortOrder;
 		}
 	}

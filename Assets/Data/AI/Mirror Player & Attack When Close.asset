@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitState: {fileID: 11400000, guid: 9c6731d98b530564a8db1ad5c1fe163c, type: 2}
   sublogics:
-  - {fileID: 11400000, guid: ab871366fb6961b408e175df2a104b69, type: 2}
-  - {fileID: 11400000, guid: 78b2af9a86ef6614f86d4f88d5f583f3, type: 2}
+  - {fileID: 11400000, guid: addff3da965c67240a34d889b259dfd0, type: 2}
+  - {fileID: 11400000, guid: 72d0bd3c2437cc84ba1a69a6bd50e0c7, type: 2}

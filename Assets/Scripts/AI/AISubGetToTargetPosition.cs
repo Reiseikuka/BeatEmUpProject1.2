@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace SA
 {
-	[CreateAssetMenu]
+	[CreateAssetMenu(menuName = "AI Sub Logics/ Get To Target Position")]
+
 	public class AISubGetToTargetPosition : AISubLogic
 	{
 		public Vector3 targetOffset;

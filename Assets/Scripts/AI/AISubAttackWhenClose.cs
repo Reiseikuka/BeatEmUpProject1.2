@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace SA
 {
-	[CreateAssetMenu]
+	[CreateAssetMenu(menuName = "AI Sub Logics/ Attack When Close")]
+
 	public class AISubAttackWhenClose : AISubLogic
 	{
 		public float attackDis_Y = 0.05f;

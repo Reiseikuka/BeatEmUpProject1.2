@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SA
 {
@@ -10,6 +11,16 @@ namespace SA
 
         public Vector3 deltaPosition;
         UnitController owner;
+
+        public UnityEvent[] myEvents;
+
+        public void TriggerEvent(int i)
+        {
+            if (i > myEvents.Length - 1)
+                return;
+
+            myEvents[i].Invoke();
+        }
 
         public bool canEnableCombo {
             get {
@@ -36,9 +47,7 @@ namespace SA
 
         public void PlayAnimation(string animName, float crossfadeTime = 0)
         {
-
             anim.CrossFadeInFixedTime(animName, crossfadeTime);
-
             anim.SetBool("isInteracting", true);
         }
 
@@ -85,6 +94,11 @@ namespace SA
         public void ShakeCamera()
         {
             CameraManager.singleton.ShakeCamera();
+        }
+
+        public void SpawnObject(string id)
+        {
+            owner.SpawnObject(id);
         }
     }
 }
