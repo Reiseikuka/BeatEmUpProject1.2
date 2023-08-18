@@ -10,6 +10,13 @@ namespace SA
 
 		public Phase debugPhase;
 		public bool debugStart;
+
+		public static PhaseManager singleton;
+		private void Awake()
+		{
+			singleton = this;
+		}
+
 		private void Update()
 		{
 			if (debugStart)
@@ -25,9 +32,9 @@ namespace SA
 			currentPhase.onPhaseStart.Invoke();
 		}
 
-		public void CameraFollowStatus(bool status)
-		{
-			CameraManager.singleton.isFollowing = status;
+		public void CameraFollowStatus(bool status) {
+			CameraManager.singleton.FollowStatus(status);
 		}
+
 	}
 }

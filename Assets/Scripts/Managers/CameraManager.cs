@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 namespace SA
 {
@@ -8,32 +9,52 @@ namespace SA
     {
         public Transform target;
 
-        public Transform p1;
-        //Waypoint 1
-        public Transform p2;
-        //Waypoint 2
+		//public Transform p1;
+		//public Transform p2;
 
         public bool isFollowing;
-        public SA.Utilities.ShakeTransform shakeCamera;
+        public float speed = 6;
 
         public static CameraManager singleton;
 
-        public void Awake()
-        {
+        public float shakeTime = 0.5f;
+        public float shakeAmplitude = 0.025f;
+        float _shakeLife = 0;
+
+		public void Awake()
+		{
             singleton = this;
+
+            noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+          
+		}
+
+        public void FollowStatus(bool status)
+        {
+            isFollowing = status;
         }
 
-        private void Update()
-        {
+
+		private void Update()
+		{
+            float delta = Time.deltaTime;
+
             if (isFollowing)
             {
-                Vector3 p = GetClosestPointOnFiniteLine(target.position, p1.position,p2.position);
-                p.z = transform.position.z;
-                transform.position = p;
+                transform.position = Vector3.Lerp(transform.position, target.position, delta * 6);
+            }
+
+            if (_shakeLife > 0)
+            {
+                _shakeLife -= delta;
+            }
+            else
+            { 
+                noise.m_AmplitudeGain = 0;
             }
         }
 
-        // For finite lines:
         Vector3 GetClosestPointOnFiniteLine(Vector3 point, Vector3 line_start, Vector3 line_end)
         {
             Vector3 line_direction = line_end - line_start;
@@ -43,12 +64,12 @@ namespace SA
             return line_start + line_direction * project_length;
         }
 
+        public CinemachineVirtualCamera vcam;
+         CinemachineBasicMultiChannelPerlin noise;
         public void ShakeCamera()
         {
-            shakeCamera.Shake();
+            noise.m_AmplitudeGain = shakeAmplitude;
+            _shakeLife = shakeTime;
         }
-
     }
-
 }
-
