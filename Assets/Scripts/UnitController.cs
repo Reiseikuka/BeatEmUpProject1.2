@@ -54,10 +54,12 @@ namespace SA
 
         DebugTextHandler debugText;
         public string debugState;
+        Camera cam;
 
 		private void Start()
 		{
             animatorHook = GetComponentInChildren<AnimatorHook>();
+            //cam = GetComponent<Camera>();
 
             if (isAI)
             {
@@ -118,7 +120,23 @@ namespace SA
                     }
                 }
 			}
-          
+
+
+            Debug.Log(Camera.main);
+
+            if (!isAI) 
+            {
+
+                //Vector2 viewport = cam.WorldToViewportPoint(targetPosition);
+                Vector2 viewport = Camera.main.WorldToViewportPoint(targetPosition);
+                if (viewport.x < 0 || viewport.x > 1 || viewport.y < 0 || viewport.y > 1)
+                    {
+                        isValid = false;
+                    }
+            }
+            //If player wants to get outside of the camera length, do not allow it. Making position valid if is on the Camera space
+               //Is not working as one would want
+
             if (isValid || isAI && !isInteracting)
             { 
                 transform.position = targetPosition;
