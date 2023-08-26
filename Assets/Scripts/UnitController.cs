@@ -40,11 +40,12 @@ namespace SA
         public int actionsIndex;
         public ActionDataHolder actionDataHolder;
 
-        ActionData[] currentActionData {
+        ActionsContainer currentActionData {
             get {
                 return actionDataHolder.GetActions(actionsIndex);
             }
         }
+
 
         public bool isInteracting {
             get {
@@ -164,10 +165,26 @@ namespace SA
 
         public void DetectAction(InputHandler.InputFrame f)
         {
-            if (f.attack == false && f.jump == false)
+            if (currentActionData == null)
                 return;
 
-			foreach (var a in currentActionData)
+            if (f.attack == false && f.jump == false && f.isDashLeft == false && f.isDashRight == false)
+                return;
+
+            if (f.isDashLeft || f.isDashRight) 
+            {
+                    if (currentActionData.canDash)
+                    {
+                        HandleRotation(f.isDashLeft);
+                        PlayAnimation("dash");
+                    }
+
+                    f.isDashLeft = false;
+                    f.isDashRight = false;
+                return;
+            }
+
+			foreach (var a in currentActionData.actions)
 			{
                 if (a.isDeterministic)
                 {

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Player Actions 1
   m_EditorClassIdentifier: 
   actions:
-  - actionsId: 
+  - actionsId: idle
+    canDash: 1
     actions:
     - actionAnim: attack 1
       damageType: 0
@@ -30,6 +31,8 @@ MonoBehaviour:
         down: 0
         attack: 1
         jump: 0
+        isDashRight: 0
+        isDashLeft: 0
     - actionAnim: up_attack
       damageType: 3
       canHitAllies: 0
@@ -45,6 +48,8 @@ MonoBehaviour:
         down: 0
         attack: 1
         jump: 0
+        isDashRight: 0
+        isDashLeft: 0
     - actionAnim: jump
       damageType: 0
       canHitAllies: 0
@@ -60,7 +65,10 @@ MonoBehaviour:
         down: 0
         attack: 0
         jump: 1
-  - actionsId: 
+        isDashRight: 0
+        isDashLeft: 0
+  - actionsId: on jump
+    canDash: 0
     actions:
     - actionAnim: jump_attack_1
       damageType: 2
@@ -77,3 +85,5 @@ MonoBehaviour:
         down: 0
         attack: 1
         jump: 0
+        isDashRight: 0
+        isDashLeft: 0

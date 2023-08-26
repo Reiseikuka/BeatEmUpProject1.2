@@ -9,15 +9,16 @@ namespace SA
     {
         public ActionsContainer[] actions;
 
-        public ActionData[] GetActions(int index)
+        public ActionsContainer GetActions(int index)
         {
-            return actions[index].actions;
+            return actions[index];
         }
     }
     [System.Serializable]
     public class ActionsContainer
     {
         public string actionsId;
+        public bool canDash;
         public ActionData[] actions;
     }
 }
