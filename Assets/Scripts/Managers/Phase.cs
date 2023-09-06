@@ -12,9 +12,9 @@ namespace SA
 		public UnityEvent onPhaseStart;
 		public UnityEvent onPhaseEnded;
 
-		public void AssignPhaseToManager()
+		public void PhaseStart()
 		{
-			PhaseManager.singleton.AssignPhase(this);
+			onPhaseStart.Invoke();
 		}
 
 		public void CameraFollowStatus(bool status)

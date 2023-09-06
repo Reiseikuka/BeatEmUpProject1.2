@@ -92,9 +92,11 @@
     <Compile Include="Assets\Scripts\ShakeTransform.cs" />
     <Compile Include="Assets\Scripts\AI\MovingThug.cs" />
     <Compile Include="Assets\Scripts\MMenuControl.cs" />
+    <Compile Include="Assets\Scripts\AIDirector.cs" />
     <Compile Include="Assets\Scripts\AI\AIWait.cs" />
     <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
     <Compile Include="Assets\Scripts\AI\AISublogicContainer.cs" />
+    <Compile Include="Assets\Scripts\AISubFollowDirector.cs" />
     <Compile Include="Assets\Data\Inputs\PlayerInputs.cs" />
   </ItemGroup>
   <ItemGroup>

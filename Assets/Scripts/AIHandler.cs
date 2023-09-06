@@ -6,9 +6,9 @@ using PolyNav;
 
 namespace SA
 {
-    public class AIHandler : MonoBehaviour
-    {
-        public UnitController unitController;
+	public class AIHandler : MonoBehaviour
+	{
+		public UnitController unitController;
 
 		public UnitController enemy;
 
@@ -17,8 +17,10 @@ namespace SA
 
 		public float minDeadTime;
 		public float maxDeadTime;
-		float getDeadTimeRate {
-			get {
+		float getDeadTimeRate
+		{
+			get
+			{
 				float v = Random.Range(minDeadTime, maxDeadTime);
 				return v;
 			}
@@ -43,9 +45,52 @@ namespace SA
 		public bool forceStop;
 
 		public AIWaypoints waypoints;
+		public bool hasAttackPosition;
+		public bool hasRetreatPosition;
+		D_TargetPosition _storedPosition;
+		public D_TargetPosition getStoredPosition
+		{
+			get
+			{
+				return _storedPosition;
+			}
+		}
+		public void AssignTargetPosition_Director(D_TargetPosition a, bool isRetreat)
+		{
+			if (a == null)
+				return;
 
-		public bool isInteracting {
-			get {
+			_storedPosition = a;
+			a.owner = this;
+
+			if (isRetreat)
+			{
+				hasRetreatPosition = true;
+				hasAttackPosition = false;
+			}
+			else
+			{
+				hasAttackPosition = true;
+				hasRetreatPosition = false;
+			}
+		}
+
+		public void ClearTargetPosition_Director()
+		{
+			if (_storedPosition != null)
+			{
+				_storedPosition.owner = null;
+				_storedPosition = null;
+			}
+
+			hasAttackPosition = false;
+			hasRetreatPosition = false;
+		}
+
+		public bool isInteracting
+		{
+			get
+			{
 				return unitController.isInteracting;
 			}
 		}
@@ -55,7 +100,14 @@ namespace SA
 			unitController.isAI = true;
 			unitController.onDeath = UnRegisterMe;
 			agent = GetComponent<PolyNavAgent>();
+
+			if (agent == null)
+			{
+				agent = gameObject.AddComponent<PolyNavAgent>();
+			}
 			agent.map = LevelManager.singleton.navmesh;
+
+			myPhase = GetComponentInParent<Phase>();
 
 			if (myPhase != null)
 			{
@@ -71,10 +123,12 @@ namespace SA
 			{
 				myPhase.UnRegisterUnit(this);
 			}
+
+			ClearTargetPosition_Director();
 		}
 
 		public AILogic currentLogic;
-		
+
 
 		private void Update()
 		{
@@ -103,7 +157,7 @@ namespace SA
 		}
 
 		public void PlayActionFromHolder()
-		{ 
+		{
 			unitController.PlayAction(unitController.actionDataHolder.actions[0].actions[0]);
 		}
 
@@ -127,7 +181,7 @@ namespace SA
 
 		public float GetDistance(Vector3 p1, Vector3 p2)
 		{
-		
+
 			return Vector2.Distance(p1, p2);
 		}
 
@@ -146,8 +200,8 @@ namespace SA
 
 				unitController.HandleRotation(direction.x < 0);
 			}
-			else 
-			{ 
+			else
+			{
 				//unitController.HandleRotation(unitController.
 			}
 
@@ -216,11 +270,11 @@ namespace SA
 			Node n = GridManager.singleton.GetNode(tp);
 			if (n.isWalkable)
 			{
-				
+
 
 				result = true;
 			}
-			
+
 			return result;
 		}
 
@@ -281,7 +335,7 @@ namespace SA
 				{
 					isValid = true;
 				}
-				
+
 			}
 
 			if (!isValid)
@@ -297,7 +351,7 @@ namespace SA
 		{
 			Vector3 retVal = o;
 
-			Collider2D[] colliders = Physics2D.OverlapCircleAll(o,20, unitController.walkLayer);
+			Collider2D[] colliders = Physics2D.OverlapCircleAll(o, 20, unitController.walkLayer);
 
 			foreach (var col in colliders)
 			{
@@ -308,7 +362,7 @@ namespace SA
 				TWalkable w = col.transform.GetComponentInParent<TWalkable>();
 				if (w != null)
 				{
-					Vector3 dir =  o - transform.position;
+					Vector3 dir = o - transform.position;
 					dir.Normalize();
 					RaycastHit2D hit2D = Physics2D.Raycast(o, dir, 100, unitController.walkLayer);
 
@@ -317,7 +371,7 @@ namespace SA
 						float dis = Vector2.Distance(o, hit2D.point);
 						retVal = transform.position + dir * (dis * .5f);
 
-						Debug.DrawLine(transform.position, dir * (dis * .9f), Color.green,20);
+						Debug.DrawLine(transform.position, dir * (dis * .9f), Color.green, 20);
 					}
 				}
 			}
